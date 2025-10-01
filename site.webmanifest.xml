@@ -1,0 +1,22 @@
+{
+    "name": "Dr. Pullig Privatärztliche Praxis",
+    "short_name": "Dr. Pullig",
+    "description": "Privatärztliche Praxis für ganzheitliche und funktionelle Medizin in Simmern",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#284261",
+    "orientation": "portrait-primary",
+    "icons": [
+        {
+            "src": "/android-chrome-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/android-chrome-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}

@@ -1,0 +1,19 @@
+# robots.txt für Dr. Pullig Privatärztliche Praxis
+
+User-agent: *
+Allow: /
+
+Sitemap: https://www.drpullig.com/sitemap.xml
+
+Crawl-delay: 1
+
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
