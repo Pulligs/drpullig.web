@@ -1,0 +1,426 @@
+/* ============================================
+   STYLE-PAGES.CSS
+   Ergänzung zu style.css für die Unterseiten
+   /team, /leistungen, /kontakt, /termin, /kosten
+   ============================================ */
+
+/* === PAGE HERO (kleinerer Hero für Unterseiten) === */
+.page-hero {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #1e3447 100%);
+    color: var(--white);
+    padding: calc(var(--spacing-xxl) + 60px) 0 var(--spacing-xxl);
+    text-align: center;
+}
+
+.page-hero h1 {
+    color: var(--white);
+    font-size: 2.5rem;
+    margin-bottom: var(--spacing-sm);
+}
+
+.page-hero .page-subtitle {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.15rem;
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+    .page-hero {
+        padding: calc(var(--spacing-xl) + 60px) 0 var(--spacing-xl);
+    }
+    .page-hero h1 {
+        font-size: 2rem;
+    }
+    .page-hero .page-subtitle {
+        font-size: 1rem;
+    }
+}
+
+/* === BREADCRUMB === */
+.breadcrumb {
+    background: var(--light-gray);
+    padding: var(--spacing-sm) 0;
+    border-bottom: 1px solid var(--border-light);
+}
+
+.breadcrumb-list {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-xs);
+    font-size: 0.9rem;
+    margin: 0;
+    padding: 0;
+}
+
+.breadcrumb-list li {
+    color: var(--medium-gray);
+}
+
+.breadcrumb-list li:not(:last-child)::after {
+    content: "›";
+    margin-left: var(--spacing-xs);
+    color: var(--medium-gray);
+}
+
+.breadcrumb-list a {
+    color: var(--primary-blue);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.breadcrumb-list a:hover {
+    text-decoration: underline;
+}
+
+.breadcrumb-list li:last-child {
+    color: var(--dark-gray);
+    font-weight: var(--font-weight-medium);
+}
+
+/* === PAGE CONTENT === */
+.page-content {
+    padding: var(--spacing-xxl) 0;
+}
+
+.page-content .container > h2 {
+    margin-bottom: var(--spacing-md);
+    margin-top: var(--spacing-xl);
+}
+
+.page-content .container > h2:first-child {
+    margin-top: 0;
+}
+
+.page-content p {
+    margin-bottom: var(--spacing-sm);
+    font-size: 1.05rem;
+    line-height: 1.75;
+}
+
+.page-content ul {
+    margin-bottom: var(--spacing-md);
+    padding-left: var(--spacing-md);
+}
+
+.page-content ul li {
+    margin-bottom: var(--spacing-xs);
+    line-height: 1.7;
+}
+
+/* === LEAD/INTRO PARAGRAPH === */
+.lead {
+    font-size: 1.2rem;
+    color: var(--medium-gray);
+    line-height: 1.6;
+    margin-bottom: var(--spacing-xl);
+    max-width: 800px;
+}
+
+/* === CONTENT BLOCK (für längere Textbereiche) === */
+.content-block {
+    background: var(--light-gray);
+    padding: var(--spacing-lg);
+    border-radius: var(--border-radius);
+    margin-bottom: var(--spacing-lg);
+    border-left: 4px solid var(--primary-blue);
+}
+
+.content-block h3 {
+    margin-bottom: var(--spacing-sm);
+}
+
+.content-block:last-child {
+    margin-bottom: 0;
+}
+
+/* === TWO-COLUMN LAYOUT === */
+.two-column {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-xl);
+    align-items: start;
+}
+
+@media (max-width: 768px) {
+    .two-column {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+    }
+}
+
+/* === HIGHLIGHT BOX (für wichtige Infos wie Preise) === */
+.highlight-box {
+    background: rgba(40, 66, 97, 0.08);
+    border-left: 4px solid var(--primary-blue);
+    padding: var(--spacing-lg);
+    border-radius: var(--border-radius);
+    margin: var(--spacing-lg) 0;
+}
+
+.highlight-box h3 {
+    margin-bottom: var(--spacing-sm);
+}
+
+.highlight-box p:last-child {
+    margin-bottom: 0;
+}
+
+/* === CONTACT INFO LIST (für /kontakt) === */
+.contact-info-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-lg);
+    margin: var(--spacing-xl) 0;
+}
+
+.contact-info-card {
+    background: var(--white);
+    padding: var(--spacing-lg);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-md);
+    border-top: 4px solid var(--primary-blue);
+}
+
+.contact-info-card h3 {
+    font-size: 1.15rem;
+    margin-bottom: var(--spacing-sm);
+}
+
+.contact-info-card a {
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-weight: var(--font-weight-medium);
+}
+
+.contact-info-card a:hover {
+    text-decoration: underline;
+}
+
+/* === MAP CONTAINER === */
+.map-container {
+    width: 100%;
+    height: 450px;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    margin: var(--spacing-lg) 0;
+}
+
+.map-container iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+@media (max-width: 768px) {
+    .map-container {
+        height: 350px;
+    }
+}
+
+/* === SERVICE DETAIL CARD (für /leistungen, ausführlicher als service-card) === */
+.service-detail {
+    background: var(--white);
+    padding: var(--spacing-xl);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-md);
+    margin-bottom: var(--spacing-lg);
+    border-left: 4px solid var(--secondary-green);
+    transition: var(--transition);
+}
+
+.service-detail:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.service-detail h3 {
+    color: var(--primary-blue);
+    margin-bottom: var(--spacing-sm);
+}
+
+.service-detail .service-meta {
+    color: var(--medium-gray);
+    font-size: 0.95rem;
+    margin-bottom: var(--spacing-md);
+    font-style: italic;
+}
+
+.service-detail ul {
+    margin-top: var(--spacing-md);
+}
+
+/* === DOCTOR DETAIL (für /team, ausführlicher als doctor-card) === */
+.doctor-detail {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: var(--spacing-xl);
+    margin-bottom: var(--spacing-xxl);
+    align-items: start;
+}
+
+.doctor-detail:nth-child(even) {
+    grid-template-columns: 1fr 300px;
+}
+
+.doctor-detail:nth-child(even) .doctor-detail-image {
+    order: 2;
+}
+
+.doctor-detail-image img {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-md);
+}
+
+.doctor-detail-content h2 {
+    margin-bottom: var(--spacing-xs);
+}
+
+.doctor-detail-content .doctor-title {
+    color: var(--medium-gray);
+    font-size: 1.1rem;
+    margin-bottom: var(--spacing-md);
+}
+
+.doctor-detail-content .doctor-credentials {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-xs);
+    margin-bottom: var(--spacing-md);
+}
+
+.doctor-detail-content h4 {
+    margin-top: var(--spacing-md);
+    margin-bottom: var(--spacing-xs);
+}
+
+@media (max-width: 768px) {
+    .doctor-detail,
+    .doctor-detail:nth-child(even) {
+        grid-template-columns: 1fr;
+    }
+    .doctor-detail:nth-child(even) .doctor-detail-image {
+        order: 0;
+    }
+    .doctor-detail-image img {
+        max-width: 280px;
+        margin: 0 auto;
+        display: block;
+    }
+}
+
+/* === CTA SECTION === */
+.cta-section {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #1e3447 100%);
+    color: var(--white);
+    padding: var(--spacing-xxl) 0;
+    text-align: center;
+    margin-top: var(--spacing-xxl);
+}
+
+.cta-section h2 {
+    color: var(--white);
+    margin-bottom: var(--spacing-sm);
+}
+
+.cta-section p {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.1rem;
+    margin-bottom: var(--spacing-lg);
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cta-section .btn-primary {
+    background: var(--white);
+    color: var(--primary-blue);
+}
+
+.cta-section .btn-primary:hover {
+    background: var(--secondary-green);
+    color: var(--white);
+}
+
+.cta-buttons {
+    display: flex;
+    gap: var(--spacing-sm);
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* === APPOINTMENT OPTIONS (für /termin) === */
+.appointment-options-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-lg);
+    margin: var(--spacing-xl) 0;
+}
+
+.appointment-option-card {
+    background: var(--white);
+    padding: var(--spacing-xl);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-md);
+    text-align: center;
+    border-top: 4px solid var(--secondary-green);
+    transition: var(--transition);
+}
+
+.appointment-option-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
+}
+
+.appointment-option-card h3 {
+    margin-bottom: var(--spacing-sm);
+}
+
+.appointment-option-card p {
+    margin-bottom: var(--spacing-md);
+}
+
+/* === STANDALONE FORM (für /termin, /kontakt) === */
+.standalone-form {
+    max-width: 600px;
+    margin: 0 auto;
+    background: var(--white);
+    padding: var(--spacing-xl);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-md);
+}
+
+.standalone-form .form-group {
+    margin-bottom: var(--spacing-md);
+}
+
+.standalone-form input,
+.standalone-form select,
+.standalone-form textarea {
+    width: 100%;
+    padding: var(--spacing-sm);
+    border: 1px solid var(--border-light);
+    border-radius: var(--border-radius);
+    font-family: var(--font-primary);
+    font-size: 1rem;
+    transition: var(--transition);
+}
+
+.standalone-form input:focus,
+.standalone-form select:focus,
+.standalone-form textarea:focus {
+    outline: none;
+    border-color: var(--primary-blue);
+    box-shadow: 0 0 0 3px rgba(40, 66, 97, 0.1);
+}
+
+.standalone-form button {
+    width: 100%;
+    margin-top: var(--spacing-sm);
+}
