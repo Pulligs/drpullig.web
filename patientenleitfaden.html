@@ -3,29 +3,80 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Patientenleitfaden - Dr. Pullig: Ihr Weg zu ganzheitlicher Gesundheit. Alle wichtigen Informationen für Ihre ärztliche Behandlung.">
-    <meta name="keywords" content="Patientenleitfaden, Ganzheitliche Medizin, Dr. Andreas Pullig, Dr. Carmen Pullig, Anthroposophische Medizin, Privatarzt Simmern">
     
-    <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="Patientenleitfaden - Dr. Pullig Privatärztliche Praxis">
-    <meta property="og:description" content="Ihr Weg zu ganzheitlicher Gesundheit - Alle wichtigen Informationen für Ihre ärztliche Behandlung">
-    <meta property="og:image" content="logo-dr-pullig.png">
+    <title>Patientenleitfaden – Dr. Pullig Praxis Simmern</title>
+    <meta name="description" content="Patientenleitfaden für die Privatärztliche Praxis Dr. Pullig in Simmern. Ablauf des Ersttermins, Vorbereitung, Diagnostik, Behandlungsmöglichkeiten und Kosten.">
+    <meta name="keywords" content="Patientenleitfaden Dr. Pullig, Praxisablauf Simmern, Ersttermin Privatpraxis, Anamnese Vorbereitung, ganzheitliche Medizin Praxisinfo">
+    <meta name="author" content="Dr. Andreas Pullig, Dr. Carmen Pullig">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    
+    <meta name="geo.region" content="DE-RP">
+    <meta name="geo.placename" content="Simmern, Hunsrück">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Patientenleitfaden – Dr. Pullig Privatärztliche Praxis">
+    <meta property="og:description" content="Ablauf, Vorbereitung und alle wichtigen Informationen für Ihren Praxisbesuch bei Dr. Pullig in Simmern.">
+    <meta property="og:image" content="https://www.drpullig.com/logo-dr-pullig.png">
     <meta property="og:url" content="https://www.drpullig.com/patientenleitfaden">
     <meta property="og:type" content="website">
+    <meta property="og:locale" content="de_DE">
+    <meta property="og:site_name" content="Dr. Pullig Privatärztliche Praxis">
     
-    <!-- Favicon -->
-    <link rel="icon" href="favicon.png" type="image/png">
-    <link rel="apple-touch-icon" href="favicon.png">
+    <!-- Canonical -->
+    <link rel="canonical" href="https://www.drpullig.com/patientenleitfaden">
+    
+    <!-- Favicons -->
+    <link rel="icon" type="image/svg+xml" href="logo-dr-pullig.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <meta name="theme-color" content="#284261">
     
     <!-- Inter Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
+    <!-- Schema.org: WebPage -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Patientenleitfaden – Dr. Pullig Privatärztliche Praxis",
+      "url": "https://www.drpullig.com/patientenleitfaden",
+      "inLanguage": "de-DE",
+      "description": "Ablauf, Vorbereitung und Informationen für Ihren Praxisbesuch bei Dr. Pullig in Simmern.",
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "Dr. Pullig Privatärztliche Praxis",
+        "url": "https://www.drpullig.com"
+      },
+      "about": {
+        "@type": "MedicalBusiness",
+        "name": "Dr. Pullig Privatärztliche Praxis",
+        "url": "https://www.drpullig.com"
+      }
+    }
+    </script>
+    
+    <!-- Schema.org: BreadcrumbList -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Startseite", "item": "https://www.drpullig.com" },
+        { "@type": "ListItem", "position": 2, "name": "Patientenleitfaden", "item": "https://www.drpullig.com/patientenleitfaden" }
+      ]
+    }
+    </script>
+    
+    <!-- Standard Stylesheets (zuerst, damit inline CSS bei gleicher Spezifität gewinnt) -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style-pages.css">
+    
     <!-- PDF Generation Library -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    
-    <title>Patientenleitfaden - Dr. Pullig Privatärztliche Praxis</title>
     
     <style>
         /* CI-konforme CSS basierend auf der Hauptseite */
@@ -90,94 +141,7 @@
             min-width: 320px;
         }
 
-        /* Header wie auf der Hauptseite */
-        header {
-            background-color: white;
-            box-shadow: var(--light-shadow);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            border-bottom: 1px solid rgba(40,66,97,0.1);
-        }
-
-        nav {
-            max-width: var(--content-max-width);
-            margin: 0 auto;
-            padding: var(--spacing-s);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: relative;
-        }
-
-        .logo-container {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            cursor: pointer;
-            transition: opacity 0.2s ease;
-            user-select: none;
-        }
-
-        .logo-container:hover {
-            opacity: 0.9;
-        }
-
-        .header-logo {
-            width: 100px;
-            height: 100px;
-            margin-right: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .header-logo img {
-            width: 100px;
-            height: 100px;
-            object-fit: contain;
-            cursor: pointer;
-            transition: transform 0.2s ease;
-            user-select: none;
-            pointer-events: none;
-        }
-
-        .logo-text {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-        }
-
-        .practice-name {
-            font-size: 0.9rem;
-            font-weight: 600;
-            color: var(--primary-color);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 2px;
-        }
-
-        .doctors-name {
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: var(--primary-color);
-            font-family: 'Inter', sans-serif;
-        }
-
-        .back-link {
-            color: var(--primary-color);
-            text-decoration: none;
-            font-weight: 600;
-            transition: all var(--transition-time) ease;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .back-link:hover {
-            color: rgba(40,66,97,0.8);
-            transform: translateX(-3px);
-        }
+        /* Header/Nav/Logo-Styles entfernt - kommen aus style.css */
 
         /* Hauptcontainer */
         .patientenleitfaden-container {
@@ -375,61 +339,7 @@
             text-decoration: underline;
         }
 
-        /* Footer */
-        footer {
-            background-color: var(--primary-color);
-            color: white;
-            text-align: center;
-            padding: var(--spacing-xl) var(--spacing-s);
-            margin-top: var(--spacing-xl);
-            position: relative;
-            overflow: hidden;
-        }
-
-        footer p, footer div {
-            font-family: 'Inter', sans-serif;
-            font-weight: 400;
-        }
-
-        /* Back-to-Top Button */
-        .back-to-top {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background-color: var(--primary-color);
-            color: var(--white);
-            border: none;
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: var(--medium-shadow);
-            opacity: 0;
-            visibility: hidden;
-            z-index: 1000;
-        }
-
-        .back-to-top.visible {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .back-to-top:hover {
-            background-color: rgba(40,66,97,0.9);
-            transform: translateY(-3px);
-            box-shadow: var(--strong-shadow);
-        }
-
-        .back-to-top svg {
-            width: 20px;
-            height: 20px;
-            stroke: currentColor;
-            fill: none;
-        }
+        /* Footer- und Back-to-Top-Styles entfernt - kommen aus style.css */
 
         /* Responsive Design */
         @media (max-width: 768px) {
@@ -452,37 +362,16 @@
             .leitfaden-content {
                 font-size: 0.95rem;
             }
-
-            nav {
-                padding: var(--spacing-xs);
-            }
-
-            .header-logo {
-                width: 60px;
-                height: 60px;
-                margin-right: 10px;
-            }
-
-            .header-logo img {
-                width: 60px;
-                height: 60px;
-            }
-
-            .doctors-name {
-                font-size: 1rem;
-            }
-
-            .practice-name {
-                font-size: 0.8rem;
-            }
         }
 
         /* Print Styles */
         @media print {
             .action-buttons,
-            header,
-            footer,
-            .back-link {
+            .header,
+            .footer,
+            .cookie-banner,
+            .breadcrumb,
+            .back-to-top {
                 display: none !important;
             }
 
@@ -499,24 +388,50 @@
     </style>
 </head>
 <body>
-    <header>
-        <nav>
-            <div class="logo-container" onclick="window.location.href='/'">
-                <div class="header-logo">
-                    <img src="logo-dr-pullig.svg" alt="Dr. Pullig Privatärztliche Praxis Logo" width="100" height="100">
-                </div>
-                <div class="logo-text">
-                    <div class="practice-name">Privatärztliche Praxis</div>
-                </div>
+    <!-- Cookie Banner -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <p><strong>Datenschutzhinweis:</strong> Diese Website verwendet nur technisch notwendige Cookies. Für die Newsletter-Anmeldung wird Ihr Einverständnis separat eingeholt.</p>
+            <div class="cookie-buttons">
+                <button id="cookie-accept" class="btn btn-primary">Verstanden</button>
             </div>
-            <a href="/" class="back-link">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M19 7v4H5.83l3.58-3.59L8 6l-6 6 6 6 1.41-1.41L5.83 13H21V7z"/>
-                </svg>
-                Zurück zur Website
-            </a>
-        </nav>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-section">
+                    <a href="/" class="logo-link" aria-label="Zur Startseite">
+                        <img src="logo-dr-pullig.svg" alt="Dr. Pullig Privatarzt Simmern Logo" class="logo-svg">
+                    </a>
+                    <div class="practice-title">
+                        <p>Privatärztliche Praxis</p>
+                    </div>
+                </div>
+                <nav class="main-nav">
+                    <a href="/team">Ärzte</a>
+                    <a href="/leistungen">Leistungen</a>
+                    <a href="/kontakt">Kontakt</a>
+                    <a href="/termin" class="cta-button">Termin buchen</a>
+                </nav>
+                <button class="mobile-menu-toggle" aria-label="Menu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
     </header>
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+        <div class="container">
+            <ol class="breadcrumb-list">
+                <li><a href="/">Startseite</a></li>
+                <li>Patientenleitfaden</li>
+            </ol>
+        </div>
+    </nav>
 
     <main>
         <div class="patientenleitfaden-container">
@@ -799,23 +714,48 @@
         </svg>
     </button>
 
-    <footer>
-        <div class="footer-logo-container" style="margin-bottom: 20px;">
-            <img src="logo-dr-pullig-white.svg" alt="Dr. Pullig Logo" style="height: 60px; width: auto;">
-        </div>
-        <p>© 2025 Dr. Pullig Privatärztliche Praxis - Alle Rechte vorbehalten</p>
-        <div style="margin-top: 10px;">
-            <a href="#datenschutz" style="color: rgba(255,255,255,0.8); text-decoration: none; margin: 0 10px;">Datenschutz</a>
-            <a href="#impressum" style="color: rgba(255,255,255,0.8); text-decoration: none; margin: 0 10px;">Impressum</a>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <img src="logo-dr-pullig-white.svg" alt="Dr. Pullig Privatarzt Logo Simmern Hunsrück" class="footer-logo-svg">
+                    </div>
+                    <p>Privatärztliche Praxis<br>für Ganzheitliche Medizin</p>
+                    <p><a href="https://maps.google.com/?q=Holzbacher+Str.+3,+55469+Simmern" target="_blank" rel="noopener" class="address-link">Holzbacher Str. 3<br>55469 Simmern (Hunsrück)</a></p>
+                </div>
+                <div class="footer-section">
+                    <h4>Kontakt</h4>
+                    <p><strong>Termine per E-Mail:</strong> <a href="mailto:termine@drpullig.com">termine@drpullig.com</a></p>
+                    <p><strong>Telefonische Terminvergabe:</strong><br>
+                    <a href="tel:+4967619299276">06761 929 92 76</a><br>
+                    Mo-Do von 08-12 Uhr</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Praxis</h4>
+                    <p><a href="/team">Ärzte</a><br>
+                    <a href="/leistungen">Leistungen</a><br>
+                    <a href="/termin">Termin buchen</a><br>
+                    <a href="/kosten">Kosten &amp; Abrechnung</a><br>
+                    <a href="/patientenleitfaden">Patientenleitfaden</a></p>
+                </div>
+                <div class="footer-section">
+                    <h4>Mentoring</h4>
+                    <p>Neben der medizinischen Praxis begleitet Dr. Andreas Pullig Menschen dabei, ihre persönliche Entwicklung voranzutreiben und authentische Klarheit für ihren Lebensweg zu finden:</p>
+                    <a href="https://andreaspullig.com" target="_blank" class="mentoring-link">andreaspullig.com</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Dr. Pullig Privatärztliche Praxis</p>
+                <div class="footer-links">
+                    <a href="/impressum">Impressum</a>
+                    <a href="/datenschutz">Datenschutz</a>
+                </div>
+            </div>
         </div>
     </footer>
 
     <script>
-        // Logo Click Functionality
-        document.querySelector('.logo-container').addEventListener('click', function() {
-            window.location.href = '/';
-        });
-
         // Back-to-Top Button Functionality
         const backToTopButton = document.getElementById('back-to-top');
         
@@ -1124,5 +1064,8 @@
             });
         });
     </script>
+    
+    <!-- Standard Site Script (Mobile-Menü, Cookie-Banner, Back-to-Top) -->
+    <script src="script.js"></script>
 </body>
 </html>
