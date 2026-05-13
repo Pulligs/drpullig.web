@@ -78,11 +78,17 @@ document.addEventListener('DOMContentLoaded', function() {
     const logoLink = document.querySelector('.logo-link');
     if (logoLink) {
         logoLink.addEventListener('click', function(e) {
-            e.preventDefault();
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
+            // Smooth scroll nur auf der Startseite. Auf Unterseiten den
+            // Standard-Link (href="/") normal funktionieren lassen.
+            const path = window.location.pathname;
+            const isHomepage = path === '/' || path === '/index.html';
+            if (isHomepage) {
+                e.preventDefault();
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            }
         });
     }
 

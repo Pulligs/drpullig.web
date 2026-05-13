@@ -262,14 +262,6 @@
     align-items: start;
 }
 
-.doctor-detail:nth-child(even) {
-    grid-template-columns: 1fr 300px;
-}
-
-.doctor-detail:nth-child(even) .doctor-detail-image {
-    order: 2;
-}
-
 .doctor-detail-image img {
     width: 100%;
     aspect-ratio: 1;
@@ -301,12 +293,8 @@
 }
 
 @media (max-width: 768px) {
-    .doctor-detail,
-    .doctor-detail:nth-child(even) {
+    .doctor-detail {
         grid-template-columns: 1fr;
-    }
-    .doctor-detail:nth-child(even) .doctor-detail-image {
-        order: 0;
     }
     .doctor-detail-image img {
         max-width: 280px;
