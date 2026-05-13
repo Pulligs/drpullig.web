@@ -124,28 +124,37 @@
     <main>
         <div class="container">
             <div class="blog-intro">
-                <p>Hier teilen wir, was uns in der Praxis beschäftigt – mit dem Anspruch, gut recherchiert zu sein und gleichzeitig verständlich zu bleiben. Themen, die in der Fünf-Minuten-Medizin keinen Platz finden, aber für Ihre Gesundheit zentral sein können.</p>
+                <p>Hier teilen wir, was uns in der Praxis bewegt – Beobachtungen aus unserem Alltag mit Patientinnen und Patienten, Gedanken, die uns selbst beschäftigen, und Themen, die wir so gründlich recherchieren, wie es uns möglich ist. Manches berührt Bereiche, in denen die Medizin gerade erst lernt zu fragen. Manches greift Fragen auf, die in fünf Minuten Sprechstunde keinen Platz finden, aber zentral sind für das, was wir Gesundheit nennen.</p>
+
+                <p>Unser Anliegen ist nicht, Ihnen Antworten zu geben, die Sie nur noch annehmen müssen. Wir möchten Ihnen ein möglichst klares Bild zur Verfügung stellen – damit Sie selbst besser entscheiden können, was für Sie und Ihren Weg stimmig ist.</p>
+            </div>
+
+            <!-- Hinweis-Box -->
+            <div class="blog-disclaimer blog-intro-disclaimer">
+                Wir erheben keinen Anspruch auf Vollständigkeit. Die Forschung entwickelt sich weiter, und manchmal sprechen wir auch Themen an, über die kontrovers diskutiert wird. Wir möchten Gedanken anregen und zum Austausch einladen – wir freuen uns über Resonanz, wenn sie respektvoll bleibt.
             </div>
 
             <!-- Kategorie-Filter -->
             <div class="blog-filter" role="tablist" aria-label="Artikel filtern">
                 <button class="blog-filter-btn active" data-category="all">Alle Artikel</button>
-                <button class="blog-filter-btn" data-category="funktionelle-medizin">Funktionelle Medizin</button>
+                <button class="blog-filter-btn" data-category="stress-resilienz">Stress &amp; Resilienz</button>
+                <button class="blog-filter-btn" data-category="darm-ernaehrung">Darm &amp; Ernährung</button>
+                <button class="blog-filter-btn" data-category="mikronaehrstoffe">Mikronährstoffe</button>
+                <button class="blog-filter-btn" data-category="bewusstsein-seele">Bewusstsein &amp; Seele</button>
                 <button class="blog-filter-btn" data-category="ganzheitliche-medizin">Ganzheitliche Medizin</button>
-                <button class="blog-filter-btn" data-category="ernaehrung-darm">Ernährung &amp; Darm</button>
-                <button class="blog-filter-btn" data-category="stress-bewusstsein">Stress &amp; Bewusstsein</button>
+                <button class="blog-filter-btn" data-category="longevity-praevention">Longevity &amp; Prävention</button>
             </div>
 
             <!-- Blog-Grid -->
             <div class="blog-grid" id="blog-grid">
 
                 <!-- Artikel 1: Sonnencreme -->
-                <article class="blog-card" data-category="funktionelle-medizin" data-date="2026-04-27">
+                <article class="blog-card" data-categories="ganzheitliche-medizin mikronaehrstoffe" data-date="2026-04-27">
                     <a href="/blog/sonnencreme" class="blog-card-image">
                         <img src="/images/blog/sonnencreme.jpg" alt="Sonnencreme und Hautgesundheit – Dr. Pullig Blog" loading="lazy">
                     </a>
                     <div class="blog-card-body">
-                        <span class="blog-card-category">Funktionelle Medizin</span>
+                        <span class="blog-card-category">Ganzheitliche Medizin</span>
                         <h2 class="blog-card-title"><a href="/blog/sonnencreme" style="color: inherit; text-decoration: none;">Sonnencreme</a></h2>
                         <p class="blog-card-meta">27. April 2026 · Dr. Andreas Pullig</p>
                         <p class="blog-card-excerpt">Was sie wirklich tut, was sie nicht tut, und was die Haut eigentlich kann. Eine differenzierte Betrachtung zwischen Industrie-Marketing und Studienlage.</p>
@@ -154,12 +163,12 @@
                 </article>
 
                 <!-- Artikel 2: Blasenentzündung -->
-                <article class="blog-card" data-category="ernaehrung-darm" data-date="2026-03-25">
+                <article class="blog-card" data-categories="darm-ernaehrung bewusstsein-seele stress-resilienz" data-date="2026-03-25">
                     <a href="/blog/blasenentzuendung-chronisch" class="blog-card-image">
                         <img src="/images/blog/blase.jpg" alt="Chronische Blasenentzündung – Dr. Pullig Blog" loading="lazy">
                     </a>
                     <div class="blog-card-body">
-                        <span class="blog-card-category">Ernährung &amp; Darm</span>
+                        <span class="blog-card-category">Darm &amp; Ernährung</span>
                         <h2 class="blog-card-title"><a href="/blog/blasenentzuendung-chronisch" style="color: inherit; text-decoration: none;">Wenn die Blase ständig brennt</a></h2>
                         <p class="blog-card-meta">25. März 2026 · Dr. Andreas Pullig</p>
                         <p class="blog-card-excerpt">Warum chronische Blasenentzündungen mehr als ein Bakterienproblem sind – und warum der Darm der Schlüssel zur Heilung ist.</p>
@@ -248,12 +257,18 @@
                     filterButtons.forEach(b => b.classList.remove('active'));
                     this.classList.add('active');
                     
-                    // Filter cards
+                    // Filter cards: Mehrfach-Kategorien unterstützt
                     blogCards.forEach(card => {
-                        if (category === 'all' || card.dataset.category === category) {
+                        if (category === 'all') {
                             card.classList.remove('hidden');
                         } else {
-                            card.classList.add('hidden');
+                            // data-categories ist Leerzeichen-getrennt
+                            const cardCategories = (card.dataset.categories || '').split(/\s+/);
+                            if (cardCategories.includes(category)) {
+                                card.classList.remove('hidden');
+                            } else {
+                                card.classList.add('hidden');
+                            }
                         }
                     });
                 });
