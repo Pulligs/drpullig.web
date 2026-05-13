@@ -1,5 +1,5 @@
 // Dr. Pullig Praxis - JavaScript (Bereinigt & Optimiert)
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('partialsLoaded', function() {
     
     // === COOKIE BANNER ===
     const cookieBanner = document.getElementById('cookie-banner');
