@@ -1053,44 +1053,82 @@ html { scroll-behavior: smooth; }
     font-size: 1rem;
 }
 
+/* === LAYOUT-FIXES FÜR STARTSEITE === */
+
+/* Info-Section: Beide Karten gleich groß (1:1) */
+.info-section .info-grid {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-lg, 2rem);
+    align-items: stretch;
+}
+
+.info-section .info-card-large {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+/* Button am Ende der Karten auf gleicher Höhe */
+.info-section .info-card-large > a.btn {
+    margin-top: auto;
+}
+
+@media (max-width: 900px) {
+    .info-section .info-grid {
+        grid-template-columns: 1fr;
+    }
+}
 
 /* === BLOG-VORSCHAU AUF STARTSEITE === */
 .blog-preview-section {
-    padding: var(--spacing-xxl) 0;
-    background-color: var(--color-bg-light, #f8f9fa);
+    padding: var(--spacing-xxl, 5rem) 0;
+    background: linear-gradient(180deg, #f5f7fa 0%, #eef2f7 100%);
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .blog-preview-header {
     text-align: center;
     max-width: 750px;
-    margin: 0 auto var(--spacing-xl);
+    margin: 0 auto var(--spacing-xl, 3rem);
 }
 
 .blog-preview-header h2 {
-    margin-bottom: var(--spacing-sm);
+    margin-bottom: var(--spacing-sm, 0.75rem);
+    font-size: 2rem;
+    color: var(--color-primary, #284261);
 }
 
 .blog-preview-header .lead {
     font-size: 1.1rem;
     color: var(--color-text-muted, #555);
+    margin: 0;
 }
 
-.blog-grid-preview {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: var(--spacing-lg);
-    margin-bottom: var(--spacing-xl);
+/* Blog-Grid mit 3 Spalten - höhere Spezifität */
+.blog-preview-section .blog-grid-preview {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: var(--spacing-lg, 2rem);
+    margin-bottom: var(--spacing-xl, 3rem);
 }
 
-@media (max-width: 900px) {
-    .blog-grid-preview {
-        grid-template-columns: 1fr;
+@media (max-width: 992px) {
+    .blog-preview-section .blog-grid-preview {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+}
+
+@media (max-width: 640px) {
+    .blog-preview-section .blog-grid-preview {
+        grid-template-columns: 1fr !important;
     }
 }
 
 .blog-preview-cta {
     text-align: center;
-    margin-bottom: var(--spacing-xxl);
+    margin-bottom: var(--spacing-xxl, 4rem);
 }
 
 .blog-preview-cta .btn {
@@ -1098,8 +1136,16 @@ html { scroll-behavior: smooth; }
     font-size: 1rem;
 }
 
-/* Newsletter in Blog-Vorschau soll mehr Platz haben */
+/* Newsletter in Blog-Vorschau – schön zentriert */
 .blog-preview-section .blog-newsletter {
     max-width: 700px;
     margin: 0 auto;
+    background: white;
+    padding: var(--spacing-xl, 3rem);
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.blog-preview-section .blog-newsletter h3 {
+    margin-top: 0;
 }
