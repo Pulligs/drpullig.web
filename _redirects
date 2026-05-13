@@ -1,5 +1,9 @@
-# Bild-Umbenennungen (Etappe 2 / Schritt 3)
+# Bild-Umbenennungen
 # Damit Google die alten Bild-URLs nicht in 404 laufen lässt
 
 /dr-andreas-pullig.jpg /dr-andreas-pullig-privatarzt-simmern.jpg 301
 /dr-carmen-pullig.jpg /team-carmen-pullig.jpg 301
+
+# Blog-Bilder in /images/blog/ verschoben
+/sonnencreme.jpg /images/blog/sonnencreme.jpg 301
+/blase.jpg /images/blog/blase.jpg 301
