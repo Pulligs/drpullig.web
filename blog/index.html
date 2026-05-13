@@ -144,6 +144,53 @@
                     </div>
                 </article>
 
+                <!-- Artikel 3: Nebennierenschwäche -->
+                <article class="blog-card" data-categories="stress-resilienz mikronaehrstoffe ganzheitliche-medizin" data-date="2026-02-25">
+                    <a href="/blog/nebennierenschwaeche" class="blog-card-image">
+                        <img src="/images/blog/nebenniere.jpg" alt="Nebennierenschwäche und Erschöpfung – Dr. Pullig Blog" loading="lazy">
+                    </a>
+                    <div class="blog-card-body">
+                        <span class="blog-card-category">Ganzheitliche Medizin</span>
+                        <h2 class="blog-card-title"><a href="/blog/nebennierenschwaeche" style="color: inherit; text-decoration: none;">Nebennierenschwäche</a></h2>
+                        <p class="blog-card-meta">25. Februar 2026 · Dr. Andreas Pullig</p>
+                        <p class="blog-card-excerpt">Acht Stunden geschlafen und trotzdem erschöpft? Drei Kaffee am Vormittag? Nachmittagstief wie eine Wand? Über funktionelle Nebennierenschwäche, was Mitochondrien damit zu tun haben – und warum Ihr Arzt oft „nichts" findet.</p>
+                        <a href="/blog/nebennierenschwaeche" class="blog-card-link">Weiterlesen</a>
+                    </div>
+                </article>
+
+                <!-- Artikel 4: Welt als Stressfaktor -->
+                <article class="blog-card" data-categories="stress-resilienz bewusstsein-seele ganzheitliche-medizin" data-date="2026-02-17">
+                    <a href="/blog/kollektiver-stress" class="blog-card-image">
+                        <img src="/images/blog/kollektiverstress.jpg" alt="Kollektiver Stress und Nervensystem – Dr. Pullig Blog" loading="lazy">
+                    </a>
+                    <div class="blog-card-body">
+                        <span class="blog-card-category">Stress &amp; Resilienz</span>
+                        <h2 class="blog-card-title"><a href="/blog/kollektiver-stress" style="color: inherit; text-decoration: none;">Wenn die Welt zum Stressfaktor wird</a></h2>
+                        <p class="blog-card-meta">17. Februar 2026 · Dr. Andreas Pullig</p>
+                        <p class="blog-card-excerpt">Was kollektiver Dauerstress mit Ihrem Nervensystem macht – über sekundäre Traumatisierung, erlernte Hilflosigkeit und fünf konkrete Wege zurück in die eigene Handlungsfähigkeit.</p>
+                        <a href="/blog/kollektiver-stress" class="blog-card-link">Weiterlesen</a>
+                    </div>
+                </article>
+
+                <!-- Artikel 5: Stress frisst Nährstoffe -->
+                <article class="blog-card" data-categories="stress-resilienz mikronaehrstoffe darm-ernaehrung" data-date="2026-02-12">
+                    <a href="/blog/stress-naehrstoffe" class="blog-card-image">
+                        <img src="/images/blog/stresspillen.jpg" alt="Stress frisst Nährstoffe – Dr. Pullig Blog" loading="lazy">
+                    </a>
+                    <div class="blog-card-body">
+                        <span class="blog-card-category">Mikronährstoffe</span>
+                        <h2 class="blog-card-title"><a href="/blog/stress-naehrstoffe" style="color: inherit; text-decoration: none;">Stress frisst Nährstoffe</a></h2>
+                        <p class="blog-card-meta">12. Februar 2026 · Dr. Carmen &amp; Dr. Andreas Pullig</p>
+                        <p class="blog-card-excerpt">Erschöpft trotz „gesunder Ernährung"? Was der Körper unter Stress wirklich verbraucht – die sieben wichtigsten Nährstoffe, ihre Funktionen, Quellen und sinnvolle Blutwerte.</p>
+                        <a href="/blog/stress-naehrstoffe" class="blog-card-link">Weiterlesen</a>
+                    </div>
+                </article>
+
+            </div>
+
+            <!-- Mehr-laden Button (wird nur angezeigt wenn mehr als 9 Artikel) -->
+            <div class="blog-load-more-wrapper" id="blog-load-more-wrapper" style="display: none;">
+                <button class="btn btn-outline" id="blog-load-more-btn">Weitere Artikel anzeigen</button>
             </div>
 
             <!-- Newsletter dezent am Ende -->
@@ -202,6 +249,54 @@
             const cards = Array.from(blogCards);
             cards.sort((a, b) => new Date(b.dataset.date) - new Date(a.dataset.date));
             cards.forEach(card => grid.appendChild(card));
+
+            // Lazy-Reveal: initial 9 Artikel anzeigen, Rest hinter "Mehr laden"-Button
+            const VISIBLE_LIMIT = 9;
+            const loadMoreWrapper = document.getElementById('blog-load-more-wrapper');
+            const loadMoreBtn = document.getElementById('blog-load-more-btn');
+            let currentlyVisible = VISIBLE_LIMIT;
+
+            function applyLazyReveal() {
+                // Nur sichtbare (nicht durch Filter ausgeblendete) Karten zählen
+                const activeCards = cards.filter(card => !card.classList.contains('hidden'));
+
+                activeCards.forEach((card, index) => {
+                    if (index < currentlyVisible) {
+                        card.classList.remove('lazy-hidden');
+                    } else {
+                        card.classList.add('lazy-hidden');
+                    }
+                });
+
+                // Mehr-laden-Button nur wenn es mehr als currentlyVisible gibt
+                if (activeCards.length > currentlyVisible) {
+                    loadMoreWrapper.style.display = 'block';
+                    const remaining = activeCards.length - currentlyVisible;
+                    loadMoreBtn.textContent = remaining > VISIBLE_LIMIT 
+                        ? 'Weitere ' + VISIBLE_LIMIT + ' Artikel anzeigen' 
+                        : 'Weitere ' + remaining + ' Artikel anzeigen';
+                } else {
+                    loadMoreWrapper.style.display = 'none';
+                }
+            }
+
+            // Beim Klick auf Mehr-laden: weitere 9 anzeigen
+            loadMoreBtn.addEventListener('click', function() {
+                currentlyVisible += VISIBLE_LIMIT;
+                applyLazyReveal();
+            });
+
+            // Bei Filter-Klick: Lazy-Reveal zurücksetzen
+            filterButtons.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    currentlyVisible = VISIBLE_LIMIT;
+                    // Kurz warten damit das Filter-Update durch ist
+                    setTimeout(applyLazyReveal, 10);
+                });
+            });
+
+            // Initial anwenden
+            applyLazyReveal();
         });
     </script>
 </body>
