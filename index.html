@@ -229,6 +229,137 @@
     <!-- Stylesheet -->
     <link rel="stylesheet" href="style.css">
     
+
+    
+    <!-- CRITICAL LAYOUT FIX – muss am Ende des heads sein, damit alles andere überschrieben wird -->
+    <style>
+        /* === Info-Grid: zwei Karten exakt 50/50 === */
+        section#abrechnung.info-section .info-grid {
+            display: grid !important;
+            grid-template-columns: 1fr 1fr !important;
+            gap: 2rem !important;
+            align-items: stretch !important;
+            max-width: none !important;
+        }
+        section#abrechnung.info-section .info-card-large {
+            width: 100% !important;
+            max-width: none !important;
+            min-width: 0 !important;
+            display: flex !important;
+            flex-direction: column !important;
+            box-sizing: border-box !important;
+        }
+        section#abrechnung.info-section .info-card-large > .btn,
+        section#abrechnung.info-section .info-card-large > a.btn {
+            margin-top: auto !important;
+            align-self: flex-start !important;
+        }
+        @media (max-width: 900px) {
+            section#abrechnung.info-section .info-grid {
+                grid-template-columns: 1fr !important;
+            }
+        }
+
+        /* === Blog-Vorschau auf Startseite === */
+        .home-blog-section {
+            padding: 5rem 0 !important;
+            background: linear-gradient(180deg, #f5f7fa 0%, #eef2f7 100%) !important;
+            border-top: 1px solid rgba(0, 0, 0, 0.05) !important;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05) !important;
+        }
+        .home-blog-header {
+            text-align: center !important;
+            max-width: 750px !important;
+            margin: 0 auto 3rem !important;
+        }
+        .home-blog-header h2 {
+            margin: 0 0 0.75rem 0 !important;
+            font-size: 2rem !important;
+            color: #284261 !important;
+        }
+        .home-blog-header p {
+            font-size: 1.1rem !important;
+            color: #555 !important;
+            margin: 0 !important;
+            line-height: 1.6 !important;
+        }
+        /* DREI KARTEN nebeneinander - mit allen Override-Tricks */
+        .home-blog-section .home-blog-cards {
+            display: grid !important;
+            grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+            gap: 2rem !important;
+            margin: 0 0 3rem 0 !important;
+            width: 100% !important;
+            max-width: 100% !important;
+        }
+        .home-blog-section .home-blog-cards > .blog-card {
+            width: 100% !important;
+            max-width: none !important;
+            min-width: 0 !important;
+            margin: 0 !important;
+            box-sizing: border-box !important;
+        }
+        .home-blog-section .home-blog-cards .blog-card-image img {
+            width: 100% !important;
+            height: 220px !important;
+            object-fit: cover !important;
+            display: block !important;
+        }
+        @media (max-width: 992px) {
+            .home-blog-section .home-blog-cards {
+                grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+            }
+        }
+        @media (max-width: 640px) {
+            .home-blog-section .home-blog-cards {
+                grid-template-columns: 1fr !important;
+            }
+        }
+        .home-blog-cta {
+            text-align: center !important;
+            margin-bottom: 4rem !important;
+        }
+        .home-blog-cta .btn {
+            padding: 12px 32px !important;
+            font-size: 1rem !important;
+        }
+        /* Newsletter mittig, max 650px, weißer Hintergrund */
+        .home-blog-section .blog-newsletter {
+            max-width: 650px !important;
+            margin: 0 auto !important;
+            background: white !important;
+            padding: 2.5rem !important;
+            border-radius: 8px !important;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06) !important;
+            text-align: center !important;
+        }
+        .home-blog-section .blog-newsletter h3 {
+            margin-top: 0 !important;
+            text-align: center !important;
+        }
+        .home-blog-section .blog-newsletter p {
+            text-align: center !important;
+        }
+        .home-blog-section .blog-newsletter-form {
+            display: flex !important;
+            gap: 0.5rem !important;
+            max-width: 480px !important;
+            margin: 1.5rem auto 0 !important;
+            justify-content: center !important;
+        }
+        .home-blog-section .blog-newsletter-form input[type="email"] {
+            flex: 1 !important;
+            padding: 0.75rem 1rem !important;
+            border: 1px solid #ddd !important;
+            border-radius: 4px !important;
+            font-size: 1rem !important;
+        }
+        @media (max-width: 540px) {
+            .home-blog-section .blog-newsletter-form {
+                flex-direction: column !important;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Cookie Banner - NEU und DSGVO-konform -->
