@@ -1,3 +1,10 @@
+html { scroll-behavior: smooth; }
+
+/* Sticky-Header-Offset bei Anker-Links — verhindert dass Sektionen vom Header verdeckt werden */
+#praxis, #aerzte, #leistungen, #termine, #kontakt, #hero {
+    scroll-margin-top: 100px;
+}
+
 /* ============================================
    STYLE-PAGES.CSS
    Ergänzung zu style.css für die Unterseiten
