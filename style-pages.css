@@ -1052,9 +1052,6 @@ html { scroll-behavior: smooth; }
     padding: 12px 32px;
     font-size: 1rem;
 }
-
-/* === LAYOUT-FIXES FÜR STARTSEITE === */
-
 /* Info-Section: Beide Karten gleich groß (1:1) */
 .info-section .info-grid {
     display: grid !important;
@@ -1080,72 +1077,101 @@ html { scroll-behavior: smooth; }
     }
 }
 
-/* === BLOG-VORSCHAU AUF STARTSEITE === */
-.blog-preview-section {
-    padding: var(--spacing-xxl, 5rem) 0;
+/* === STARTSEITE: INFO-GRID 50/50 (Abrechnung + Patientenleitfaden) === */
+section#abrechnung.info-section .info-grid {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 2rem;
+    align-items: stretch;
+}
+
+section#abrechnung.info-section .info-card-large {
+    display: flex !important;
+    flex-direction: column !important;
+    height: 100% !important;
+    max-width: none !important;
+    width: 100% !important;
+}
+
+section#abrechnung.info-section .info-card-large > a.btn,
+section#abrechnung.info-section .info-card-large > .btn {
+    margin-top: auto;
+    align-self: flex-start;
+}
+
+@media (max-width: 900px) {
+    section#abrechnung.info-section .info-grid {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+/* === STARTSEITE: BLOG-VORSCHAU === */
+.home-blog-section {
+    padding: 5rem 0;
     background: linear-gradient(180deg, #f5f7fa 0%, #eef2f7 100%);
     border-top: 1px solid rgba(0, 0, 0, 0.05);
     border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 
-.blog-preview-header {
+.home-blog-header {
     text-align: center;
     max-width: 750px;
-    margin: 0 auto var(--spacing-xl, 3rem);
+    margin: 0 auto 3rem;
 }
 
-.blog-preview-header h2 {
-    margin-bottom: var(--spacing-sm, 0.75rem);
+.home-blog-header h2 {
+    margin: 0 0 0.75rem 0;
     font-size: 2rem;
     color: var(--color-primary, #284261);
 }
 
-.blog-preview-header .lead {
+.home-blog-header p {
     font-size: 1.1rem;
-    color: var(--color-text-muted, #555);
+    color: #555;
     margin: 0;
+    line-height: 1.6;
 }
 
-/* Blog-Grid mit 3 Spalten - höhere Spezifität */
-.blog-preview-section .blog-grid-preview {
+/* Drei Karten nebeneinander - mit hoher Spezifität, damit blog-grid CSS nicht stört */
+.home-blog-section .home-blog-cards {
     display: grid !important;
     grid-template-columns: repeat(3, 1fr) !important;
-    gap: var(--spacing-lg, 2rem);
-    margin-bottom: var(--spacing-xl, 3rem);
+    gap: 2rem !important;
+    margin: 0 0 3rem 0 !important;
+    max-width: 100% !important;
+}
+
+/* Karten selbst gleichmäßig auf der Karte - überschreibt eventuelle blog-card flex/width-Regeln */
+.home-blog-section .home-blog-cards .blog-card {
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
 }
 
 @media (max-width: 992px) {
-    .blog-preview-section .blog-grid-preview {
+    .home-blog-section .home-blog-cards {
         grid-template-columns: repeat(2, 1fr) !important;
     }
 }
 
 @media (max-width: 640px) {
-    .blog-preview-section .blog-grid-preview {
+    .home-blog-section .home-blog-cards {
         grid-template-columns: 1fr !important;
     }
 }
 
-.blog-preview-cta {
+.home-blog-cta {
     text-align: center;
-    margin-bottom: var(--spacing-xxl, 4rem);
+    margin-bottom: 4rem;
 }
 
-.blog-preview-cta .btn {
+.home-blog-cta .btn {
     padding: 12px 32px;
     font-size: 1rem;
 }
 
-/* Newsletter in Blog-Vorschau – schön zentriert */
-.blog-preview-section .blog-newsletter {
-    max-width: 700px;
+/* Newsletter zentriert, weißer Hintergrund, wie auf Blog-Seite */
+.home-blog-section .blog-newsletter {
+    max-width: 650px;
     margin: 0 auto;
-    background: white;
-    padding: var(--spacing-xl, 3rem);
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-}
-
-.blog-preview-section .blog-newsletter h3 {
-    margin-top: 0;
 }
