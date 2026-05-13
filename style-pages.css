@@ -1,7 +1,7 @@
 html { scroll-behavior: smooth; }
 
 /* Sticky-Header-Offset bei Anker-Links — verhindert dass Sektionen vom Header verdeckt werden */
-#praxis, #aerzte, #leistungen, #termine, #kontakt, #hero {
+#praxis, #aerzte, #leistungen, #termine, #kontakt, #hero, #abrechnung {
     scroll-margin-top: 100px;
 }
 
@@ -1051,4 +1051,55 @@ html { scroll-behavior: smooth; }
 .blog-load-more-wrapper .btn {
     padding: 12px 32px;
     font-size: 1rem;
+}
+
+
+/* === BLOG-VORSCHAU AUF STARTSEITE === */
+.blog-preview-section {
+    padding: var(--spacing-xxl) 0;
+    background-color: var(--color-bg-light, #f8f9fa);
+}
+
+.blog-preview-header {
+    text-align: center;
+    max-width: 750px;
+    margin: 0 auto var(--spacing-xl);
+}
+
+.blog-preview-header h2 {
+    margin-bottom: var(--spacing-sm);
+}
+
+.blog-preview-header .lead {
+    font-size: 1.1rem;
+    color: var(--color-text-muted, #555);
+}
+
+.blog-grid-preview {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-xl);
+}
+
+@media (max-width: 900px) {
+    .blog-grid-preview {
+        grid-template-columns: 1fr;
+    }
+}
+
+.blog-preview-cta {
+    text-align: center;
+    margin-bottom: var(--spacing-xxl);
+}
+
+.blog-preview-cta .btn {
+    padding: 12px 32px;
+    font-size: 1rem;
+}
+
+/* Newsletter in Blog-Vorschau soll mehr Platz haben */
+.blog-preview-section .blog-newsletter {
+    max-width: 700px;
+    margin: 0 auto;
 }
