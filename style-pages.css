@@ -419,13 +419,25 @@
 .blog-intro {
     text-align: center;
     max-width: 720px;
-    margin: 0 auto var(--spacing-xl);
+    margin: var(--spacing-xl) auto var(--spacing-lg);
 }
 
 .blog-intro p {
     font-size: 1.1rem;
     color: var(--medium-gray);
     line-height: 1.7;
+    margin-bottom: var(--spacing-md);
+}
+
+.blog-intro p:last-child {
+    margin-bottom: 0;
+}
+
+.blog-intro-disclaimer {
+    max-width: 720px;
+    margin: 0 auto var(--spacing-xl);
+    text-align: center;
+    font-size: 0.95rem;
 }
 
 .blog-filter {
