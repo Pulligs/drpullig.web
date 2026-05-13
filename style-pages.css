@@ -1037,3 +1037,18 @@ html { scroll-behavior: smooth; }
     color: var(--primary-blue);
 }
 
+
+/* === BLOG: LAZY-REVEAL "WEITERE ARTIKEL" === */
+.blog-card.lazy-hidden {
+    display: none;
+}
+
+.blog-load-more-wrapper {
+    text-align: center;
+    margin: var(--spacing-xl) 0;
+}
+
+.blog-load-more-wrapper .btn {
+    padding: 12px 32px;
+    font-size: 1rem;
+}
