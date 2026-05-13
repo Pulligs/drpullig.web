@@ -436,8 +436,16 @@
 .blog-intro-disclaimer {
     max-width: 720px;
     margin: 0 auto var(--spacing-xl);
-    text-align: center;
+    text-align: left;
     font-size: 0.95rem;
+}
+
+.blog-intro-disclaimer p {
+    margin-bottom: var(--spacing-sm);
+}
+
+.blog-intro-disclaimer p:last-child {
+    margin-bottom: 0;
 }
 
 .blog-filter {
