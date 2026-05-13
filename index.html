@@ -232,55 +232,10 @@
 </head>
 <body>
     <!-- Cookie Banner - NEU und DSGVO-konform -->
-    <div id="cookie-banner" class="cookie-banner" style="display: none;">
-        <div class="cookie-content">
-            <p><strong>Datenschutzhinweis:</strong> Diese Website verwendet nur technisch notwendige Cookies. Für die Newsletter-Anmeldung wird Ihr Einverständnis separat eingeholt.</p>
-            <div class="cookie-buttons">
-                <button id="cookie-accept" class="btn btn-primary">Verstanden</button>
-            </div>
-        </div>
-    </div>
+    <div data-include="cookie-banner"></div>
 
     <!-- Header - STICKY FIX ANGEWENDET -->
-    <header class="header">
-        <!-- Rest des Headers wie gehabt -->
-    </header>
-
-    
-</head>
-<body>
-    <!-- Header -->
-    <header class="header">
-        <div class="container">
-            <div class="header-content">
-                <div class="logo-section">
-                    <!-- PROBLEM 4 GELÖST: Logo als Home-Link mit smooth scroll -->
-                    <a href="#hero" class="logo-link" aria-label="Zur Startseite">
-                        <img src="logo-dr-pullig.svg" alt="Dr. Pullig Privatarzt Simmern Logo" class="logo-svg">
-                    </a>
-                    
-                    <div class="practice-title">
-                        <p>Privatärztliche Praxis</p>
-                    </div>
-                </div>
-                
-                <nav class="main-nav">
-                    <a href="#praxis">Praxis</a>
-                    <a href="#aerzte">Ärzte</a>
-                    <a href="#leistungen">Leistungen</a>
-                    <a href="#kontakt">Kontakt</a>
-                    <a href="/blog">Blog</a>
-                    <a href="#termine" class="cta-button">Termin buchen</a>
-                </nav>
-                
-                <button class="mobile-menu-toggle" aria-label="Menu">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-            </div>
-        </div>
-    </header>
+    <div data-include="header"></div>
 
     <!-- Hero Section -->
     <section id="hero" class="hero">
@@ -608,12 +563,12 @@
     </footer>
 
     <!-- PROBLEM 3 GELÖST: Back-to-Top Button hinzugefügt -->
-    <button id="back-to-top" class="back-to-top" aria-label="Nach oben scrollen">
-        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 19V5M5 12l7-7 7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-    </button>
+    <div data-include="back-to-top"></div>
 
-<script src="script.js"></script>
+<!-- Footer (Partial) -->
+    <div data-include="footer"></div>
+
+    <script src="/includes.js"></script>
+    <script src="/script.js"></script>
 </body>
 </html>
