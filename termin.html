@@ -108,63 +108,69 @@
                 </div>
             </div>
             
-            <h2>Schnelle Terminanfrage</h2>
-            <p>Füllen Sie das Formular aus – wir melden uns zur Abstimmung des konkreten Termins per E-Mail oder telefonisch bei Ihnen.</p>
-            
-            <div class="standalone-form">
-                <form id="appointment-form" action="https://formspree.io/f/xvgwanvo" method="POST">
-                    <input type="hidden" name="_subject" value="Neue Terminanfrage von drpullig.com/termin">
-                    <input type="hidden" name="_next" value="https://www.drpullig.com/?success=true">
-                    <input type="text" name="_gotcha" style="display:none">
+            <div class="termin-two-col">
+                <div class="termin-col-prep">
+                    <h2>So bereiten Sie sich vor</h2>
                     
-                    <div class="form-group">
-                        <input type="text" name="name" placeholder="Ihr Name" required>
+                    <div class="content-block">
+                        <h3>Ersttermin</h3>
+                        <p>Planen Sie für den Ersttermin <strong>60–90 Minuten</strong>.</p>
+                        
+                        <p>Vorab erhalten Sie per E-Mail den Link zu unserem digitalen Anamnesebogen. Bitte füllen Sie ihn in Ruhe aus – nach dem Absenden wird er automatisch und sicher verschlüsselt an uns übermittelt. Der Arzt wertet ihn bereits vor Ihrem Termin aus, damit Ihre wertvolle Zeit in der Praxis bestmöglich für Sie genutzt werden kann.</p>
+                        
+                        <p><strong>Zum Termin bringen Sie bitte mit:</strong></p>
+                        <ul>
+                            <li>Liste aller Medikamente und Nahrungsergänzungsmittel</li>
+                            <li>Relevante Unterlagen der letzten 2 Jahre (Laborwerte, Arztbriefe, Röntgen)</li>
+                            <li>Ihre Versicherungsunterlagen</li>
+                        </ul>
                     </div>
-                    <div class="form-group">
-                        <input type="email" name="email" placeholder="Ihre E-Mail" required>
+                    
+                    <div class="content-block">
+                        <h3>Folgetermin</h3>
+                        <p>Folgetermine dauern in der Regel <strong>30–60 Minuten</strong>, je nach Anliegen. Aktuelle Befunde oder Verlaufsdokumentationen bringen Sie bitte mit.</p>
                     </div>
-                    <div class="form-group">
-                        <input type="tel" name="phone" placeholder="Telefonnummer">
+                    
+                    <div class="content-block">
+                        <h3>Bei akuten Beschwerden</h3>
+                        <p>Bei akuten medizinischen Problemen erreichen Sie uns am besten telefonisch. Außerhalb der Sprechzeiten ist der ärztliche Bereitschaftsdienst unter <strong>116 117</strong> zuständig. Bei lebensbedrohlichen Situationen wählen Sie bitte sofort die <strong>112</strong>.</p>
                     </div>
-                    <div class="form-group">
-                        <select name="doctor" required>
-                            <option value="">Gewünschter Arzt</option>
-                            <option value="Dr. Andreas Pullig">Dr. Andreas Pullig</option>
-                            <option value="Dr. Carmen Pullig">Dr. Carmen Pullig</option>
-                            <option value="Beide Ärzte">Beide Ärzte</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <textarea name="message" placeholder="Ihr Anliegen (optional)" rows="4"></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Terminanfrage senden</button>
-                </form>
-            </div>
-            
-            <h2>So bereiten Sie sich vor</h2>
-            
-            <div class="content-block">
-                <h3>Ersttermin</h3>
-                <p>Planen Sie für den Ersttermin <strong>60–90 Minuten</strong>.</p>
+                </div>
                 
-                <p>Vorab erhalten Sie per E-Mail den Link zu unserem digitalen Anamnesebogen. Bitte füllen Sie ihn in Ruhe aus – nach dem Absenden wird er automatisch und sicher verschlüsselt an uns übermittelt. Der Arzt wertet ihn bereits vor Ihrem Termin aus, damit Ihre wertvolle Zeit in der Praxis bestmöglich für Sie genutzt werden kann.</p>
-                
-                <p><strong>Zum Termin bringen Sie bitte mit:</strong></p>
-                <ul>
-                    <li>Liste aller Medikamente und Nahrungsergänzungsmittel</li>
-                    <li>Relevante Unterlagen der letzten 2 Jahre (Laborwerte, Arztbriefe, Röntgen)</li>
-                    <li>Ihre Versicherungsunterlagen</li>
-                </ul>
-            </div>
-            
-            <div class="content-block">
-                <h3>Folgetermin</h3>
-                <p>Folgetermine dauern in der Regel <strong>30–60 Minuten</strong>, je nach Anliegen. Aktuelle Befunde oder Verlaufsdokumentationen bringen Sie bitte mit.</p>
-            </div>
-            
-            <div class="content-block">
-                <h3>Bei akuten Beschwerden</h3>
-                <p>Bei akuten medizinischen Problemen erreichen Sie uns am besten telefonisch. Außerhalb der Sprechzeiten ist der ärztliche Bereitschaftsdienst unter <strong>116 117</strong> zuständig. Bei lebensbedrohlichen Situationen wählen Sie bitte sofort die <strong>112</strong>.</p>
+                <div class="termin-col-form">
+                    <h2>Schnelle Terminanfrage</h2>
+                    <p>Füllen Sie das Formular aus – wir melden uns zur Abstimmung des konkreten Termins per E-Mail oder telefonisch bei Ihnen.</p>
+                    
+                    <div class="standalone-form">
+                        <form id="appointment-form" action="https://formspree.io/f/xvgwanvo" method="POST">
+                            <input type="hidden" name="_subject" value="Neue Terminanfrage von drpullig.com/termin">
+                            <input type="hidden" name="_next" value="https://www.drpullig.com/?success=true">
+                            <input type="text" name="_gotcha" style="display:none">
+                            
+                            <div class="form-group">
+                                <input type="text" name="name" placeholder="Ihr Name" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" name="email" placeholder="Ihre E-Mail" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="tel" name="phone" placeholder="Telefonnummer">
+                            </div>
+                            <div class="form-group">
+                                <select name="doctor" required>
+                                    <option value="">Gewünschter Arzt</option>
+                                    <option value="Dr. Andreas Pullig">Dr. Andreas Pullig</option>
+                                    <option value="Dr. Carmen Pullig">Dr. Carmen Pullig</option>
+                                    <option value="Beide Ärzte">Beide Ärzte</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <textarea name="message" placeholder="Ihr Anliegen (optional)" rows="4"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Terminanfrage senden</button>
+                        </form>
+                    </div>
+                </div>
             </div>
             
             <p style="margin-top: var(--spacing-xl);">Detaillierte Informationen zum Praxisablauf finden Sie im <a href="/patientenleitfaden">Patientenleitfaden</a>. Fragen zur Abrechnung beantwortet die Seite <a href="/kosten">Kosten &amp; Abrechnung</a>.</p>

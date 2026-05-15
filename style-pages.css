@@ -1175,3 +1175,48 @@ section#abrechnung.info-section .info-card-large > .btn {
     max-width: 650px;
     margin: 0 auto;
 }
+
+
+/* === HEADER CTA-BUTTON LITERATUR: mehr Atem === */
+.main-nav .cta-button {
+    padding-left: 1.5rem !important;
+    padding-right: 1.5rem !important;
+}
+
+/* === TERMIN-SEITE: 2-SPALTIGES LAYOUT AUF DESKTOP === */
+.termin-two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+    margin-top: 2rem;
+}
+
+/* Form-Spalte: standalone-form soll volle Breite nehmen (statt 600px zentriert) */
+.termin-col-form .standalone-form {
+    max-width: none;
+    margin: 0;
+}
+
+/* Sticky-Form-Effekt auf Desktop (Form bleibt sichtbar beim Scrollen) - optional */
+.termin-col-form {
+    position: sticky;
+    top: 6rem;
+}
+
+/* H2 in beiden Spalten ohne extra-Spacing oben */
+.termin-two-col h2:first-child {
+    margin-top: 0;
+}
+
+/* Auf Mobile: untereinander, Form zuerst (wie vorher gewünscht) */
+@media (max-width: 900px) {
+    .termin-two-col {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    .termin-col-form {
+        order: -1;
+        position: static;
+    }
+}
