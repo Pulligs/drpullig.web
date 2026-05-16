@@ -61,6 +61,44 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="style-pages.css">
+
+    <!-- CRITICAL LAYOUT FIX – überschreibt style.css für termin-Layout -->
+    <style>
+        /* Termin-Seite: 2-spaltiges Layout auf Desktop */
+        .termin-two-col {
+            display: grid !important;
+            grid-template-columns: 1fr 1fr !important;
+            gap: 3rem !important;
+            align-items: start !important;
+            margin-top: 2rem !important;
+        }
+        .termin-col-prep, .termin-col-form {
+            min-width: 0 !important;
+        }
+        .termin-col-form .standalone-form {
+            max-width: none !important;
+            margin: 0 !important;
+            width: 100% !important;
+            box-sizing: border-box !important;
+        }
+        .termin-col-form {
+            position: sticky !important;
+            top: 6rem !important;
+        }
+        .termin-two-col h2:first-child {
+            margin-top: 0 !important;
+        }
+        @media (max-width: 900px) {
+            .termin-two-col {
+                grid-template-columns: 1fr !important;
+                gap: 2rem !important;
+            }
+            .termin-col-form {
+                order: -1 !important;
+                position: static !important;
+            }
+        }
+    </style>
 </head>
 <body>
     <div data-include="cookie-banner"></div>
