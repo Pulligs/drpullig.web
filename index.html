@@ -631,7 +631,21 @@
             </div>
 
             <div class="home-blog-cards">
-                <!-- Artikel 1: Sonnencreme -->
+                <!-- Artikel 1: Darm-Mikrobiom (Fallback – wird per JS dynamisch durch die 3 neuesten ersetzt) -->
+                <article class="blog-card">
+                    <a href="/blog/darm-mikrobiom" class="blog-card-image">
+                        <img src="/images/blog/darm.jpg" alt="Darm und Mikrobiom – Dr. Pullig Blog" loading="lazy">
+                    </a>
+                    <div class="blog-card-body">
+                        <span class="blog-card-category">Darm &amp; Ernährung</span>
+                        <h3 class="blog-card-title"><a href="/blog/darm-mikrobiom" style="color: inherit; text-decoration: none;">Der Darm – vergessener Hauptdarsteller in fast jeder chronischen Erkrankung</a></h3>
+                        <p class="blog-card-meta">21. Mai 2026 · Dr. Andreas Pullig</p>
+                        <p class="blog-card-excerpt">Eine Übersicht über das Mikrobiom, die Darm-Hirn-Achse und warum so vieles, was wir „chronisches Leiden" nennen, mit diesem einen Organ zu tun hat.</p>
+                        <a href="/blog/darm-mikrobiom" class="blog-card-link">Weiterlesen</a>
+                    </div>
+                </article>
+
+                <!-- Artikel 2: Sonnencreme -->
                 <article class="blog-card">
                     <a href="/blog/sonnencreme" class="blog-card-image">
                         <img src="/images/blog/sonnencreme.jpg" alt="Sonnencreme – Dr. Pullig Blog" loading="lazy">
@@ -645,7 +659,7 @@
                     </div>
                 </article>
 
-                <!-- Artikel 2: Blasenentzündung -->
+                <!-- Artikel 3: Blasenentzündung -->
                 <article class="blog-card">
                     <a href="/blog/blasenentzuendung-chronisch" class="blog-card-image">
                         <img src="/images/blog/blase.jpg" alt="Chronische Blasenentzündung – Dr. Pullig Blog" loading="lazy">
@@ -656,20 +670,6 @@
                         <p class="blog-card-meta">25. März 2026 · Dr. Andreas Pullig</p>
                         <p class="blog-card-excerpt">Über chronische und rezidivierende Blasenentzündungen, das Mikrobiom des Urogenitaltrakts – und warum Antibiotika oft nicht die Antwort sind.</p>
                         <a href="/blog/blasenentzuendung-chronisch" class="blog-card-link">Weiterlesen</a>
-                    </div>
-                </article>
-
-                <!-- Artikel 3: Nebennierenschwäche -->
-                <article class="blog-card">
-                    <a href="/blog/nebennierenschwaeche" class="blog-card-image">
-                        <img src="/images/blog/nebenniere.jpg" alt="Nebennierenschwäche – Dr. Pullig Blog" loading="lazy">
-                    </a>
-                    <div class="blog-card-body">
-                        <span class="blog-card-category">Ganzheitliche Medizin</span>
-                        <h3 class="blog-card-title"><a href="/blog/nebennierenschwaeche" style="color: inherit; text-decoration: none;">Nebennierenschwäche</a></h3>
-                        <p class="blog-card-meta">25. Februar 2026 · Dr. Andreas Pullig</p>
-                        <p class="blog-card-excerpt">Acht Stunden geschlafen und trotzdem erschöpft? Drei Kaffee am Vormittag? Über funktionelle Nebennierenschwäche und warum Ihr Arzt oft „nichts" findet.</p>
-                        <a href="/blog/nebennierenschwaeche" class="blog-card-link">Weiterlesen</a>
                     </div>
                 </article>
             </div>
@@ -701,5 +701,61 @@
 
     <script src="/includes.js"></script>
     <script src="/script.js"></script>
+
+    <!-- Dynamisches Nachladen der 3 neuesten Blog-Artikel auf der Startseite -->
+    <script>
+    (async function loadLatestBlogPosts() {
+        try {
+            const container = document.querySelector('.home-blog-cards');
+            if (!container) return;
+            
+            // Blog-Übersicht laden
+            const response = await fetch('/blog/');
+            if (!response.ok) return;
+            
+            const html = await response.text();
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(html, 'text/html');
+            
+            // Alle Karten holen
+            const allCards = Array.from(doc.querySelectorAll('.blog-card[data-date]'));
+            if (allCards.length === 0) return;
+            
+            // Nach Datum absteigend sortieren (neueste zuerst)
+            allCards.sort((a, b) => {
+                const dateA = a.getAttribute('data-date') || '';
+                const dateB = b.getAttribute('data-date') || '';
+                return dateB.localeCompare(dateA);
+            });
+            
+            // Erste 3 nehmen
+            const latest3 = allCards.slice(0, 3);
+            
+            // Container leeren und neue Karten einsetzen
+            container.innerHTML = '';
+            latest3.forEach(card => {
+                const cardClone = card.cloneNode(true);
+                
+                // data-categories und data-date entfernen (auf Startseite nicht nötig)
+                cardClone.removeAttribute('data-categories');
+                cardClone.removeAttribute('data-date');
+                
+                // h2.blog-card-title → h3.blog-card-title (semantisch korrekt: h1 → h2 (Sektion) → h3 (Karte))
+                const h2 = cardClone.querySelector('h2.blog-card-title');
+                if (h2) {
+                    const h3 = document.createElement('h3');
+                    Array.from(h2.attributes).forEach(attr => h3.setAttribute(attr.name, attr.value));
+                    h3.innerHTML = h2.innerHTML;
+                    h2.parentNode.replaceChild(h3, h2);
+                }
+                
+                container.appendChild(cardClone);
+            });
+        } catch (err) {
+            // Bei Fehlern bleibt der Fallback-Inhalt erhalten
+            console.warn('Latest blog posts could not be loaded:', err);
+        }
+    })();
+    </script>
 </body>
 </html>
