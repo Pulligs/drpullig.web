@@ -1,0 +1,1087 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- ════════════════════════════════════════════════════════════════
+     NÄHRSTOFF-GUIDE · Dr. med. Andreas Pullig
+     Webversion · drpullig.com/naehrstoff-guide
+     ════════════════════════════════════════════════════════════════
+
+     ★ BLOG-LINKS PFLEGEN ★
+     Jeder Nährstoff im JS-Datenobjekt (weiter unten) hat ein Feld "blogs".
+     - Leer lassen ( blogs: [] )  → es erscheint KEIN Blog-Button.
+     - Sobald ein Blog existiert, einfach eintragen:
+         blogs: [ { label: "Vitamin C", url: "https://drpullig.com/blog/vitamin-c" } ]
+       → der Button erscheint dann automatisch. HTML muss NICHT angefasst werden.
+     ════════════════════════════════════════════════════════════════ -->
+
+<title>Nährstoff-Guide – Dr. med. Andreas Pullig | Funktionelle Medizin Simmern</title>
+<meta name="description" content="16 wichtige Nährstoffe verständlich erklärt: Wofür, wie viel, wann einnehmen und welche Kombinationen vermeiden. Der kostenlose Nährstoff-Guide von Dr. med. Andreas Pullig nach den Prinzipien der funktionellen Medizin.">
+<link rel="canonical" href="https://drpullig.com/naehrstoff-guide">
+
+<!-- Open Graph / Social Sharing -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="Nährstoff-Guide – Dr. med. Andreas Pullig">
+<meta property="og:description" content="16 Nährstoffe. Klare Regeln. Ein Tagesplan. Lebensmittelquellen. Nach den Prinzipien der funktionellen Medizin.">
+<meta property="og:url" content="https://drpullig.com/naehrstoff-guide">
+<meta property="og:site_name" content="Dr. med. Andreas Pullig">
+<meta property="og:locale" content="de_DE">
+<!-- <meta property="og:image" content="https://drpullig.com/img/naehrstoff-guide-cover.png"> -->
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Nährstoff-Guide – Dr. med. Andreas Pullig">
+<meta name="twitter:description" content="16 Nährstoffe verständlich erklärt – nach den Prinzipien der funktionellen Medizin.">
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --blau:       #284261;
+  --blau-tief:  #1e3252;
+  --blau-hell:  #e8edf4;
+  --gruen:      #7a9060;
+  --gruen-dark: #4a7a6a;
+  --gruen-hell: #c9d8b3;
+  --gruen-hauch:#f0f4e8;
+  --lila:       #6b5b8a;
+  --creme:      #f7f5f0;
+  --terra:      #b85c38;
+  --gold:       #c9a84c;
+  --gold-dark:  #9a7a30;
+  --text:       #2a2a2a;
+  --text-light: #5a5a5a;
+  --border:     #ddd9d0;
+  --rot-warn:   #c0392b;
+  --ampel-g:    #27ae60;
+  --ampel-y:    #e67e22;
+  --ampel-r:    #c0392b;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Lato', sans-serif;
+  background: var(--creme);
+  color: var(--text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* anchor offset for sticky header */
+.anchor { position: relative; top: -130px; display: block; visibility: hidden; }
+
+/* ═══════════════ HERO ═══════════════ */
+.hero {
+  background: var(--blau);
+  color: white;
+  position: relative;
+  overflow: hidden;
+  padding: 54px 24px 46px;
+}
+.hero::before { content: ''; position: absolute; top: -90px; right: -90px; width: 320px; height: 320px; border-radius: 50%; border: 60px solid rgba(201,216,179,0.10); pointer-events: none; }
+.hero::after  { content: ''; position: absolute; bottom: -120px; left: -110px; width: 300px; height: 300px; border-radius: 50%; border: 50px solid rgba(201,216,179,0.06); pointer-events: none; }
+.hero-stripe { position: absolute; top: 90px; right: 30px; width: 5px; height: 110px; background: var(--gruen-hell); opacity: 0.30; border-radius: 3px; }
+.hero-inner { max-width: 900px; margin: 0 auto; position: relative; z-index: 1; }
+.hero-label { font-weight: 300; font-size: 10px; letter-spacing: 3.5px; text-transform: uppercase; color: var(--gruen-hell); margin-bottom: 18px; }
+.hero-title { font-family: 'Playfair Display', serif; font-weight: 700; line-height: 1.02; color: white; margin-bottom: 12px; font-size: clamp(38px, 9vw, 60px); }
+.hero-subtitle { font-family: 'Lato', sans-serif; font-weight: 300; font-size: clamp(14px, 3.5vw, 19px); color: var(--gruen-hell); letter-spacing: 0.5px; margin-bottom: 22px; }
+.hero-desc { font-weight: 300; font-size: clamp(14px, 3.4vw, 16px); color: rgba(255,255,255,0.78); line-height: 1.7; max-width: 560px; border-left: 2px solid var(--gruen-hell); padding-left: 18px; }
+.hero-author { margin-top: 30px; padding-top: 22px; border-top: 1px solid rgba(255,255,255,0.15); font-size: 13px; color: rgba(255,255,255,0.6); font-weight: 300; line-height: 1.6; }
+.hero-author strong { color: white; font-weight: 700; display: block; font-size: 15px; margin-bottom: 2px; }
+
+/* save hint */
+.save-hint {
+  display: inline-flex; align-items: center; gap: 8px;
+  margin-top: 22px; padding: 9px 16px;
+  background: rgba(255,255,255,0.10); border: 1px solid rgba(255,255,255,0.20);
+  border-radius: 30px; font-size: 12.5px; color: rgba(255,255,255,0.85);
+}
+
+/* ═══════════════ STICKY NAV ═══════════════ */
+.nav {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(255,255,255,0.96);
+  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+}
+.nav-inner { max-width: 900px; margin: 0 auto; padding: 10px 14px; }
+.nav-search {
+  width: 100%; padding: 10px 14px; font-size: 14px; font-family: 'Lato', sans-serif;
+  border: 1.5px solid var(--border); border-radius: 10px; background: white; color: var(--text);
+  margin-bottom: 9px; transition: border-color 0.2s;
+}
+.nav-search:focus { outline: none; border-color: var(--blau); }
+.nav-search::placeholder { color: #a0a0a0; }
+.nav-chips { display: flex; gap: 7px; overflow-x: auto; padding-bottom: 3px; -webkit-overflow-scrolling: touch; scrollbar-width: thin; }
+.nav-chips::-webkit-scrollbar { height: 4px; }
+.nav-chips::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+.chip {
+  flex-shrink: 0; padding: 7px 14px; border-radius: 30px; font-size: 12.5px; font-weight: 700;
+  border: 1.5px solid var(--border); background: white; color: var(--text-light);
+  cursor: pointer; white-space: nowrap; transition: all 0.18s; font-family: 'Lato', sans-serif;
+}
+.chip:hover { border-color: var(--blau); color: var(--blau); }
+.chip.active { background: var(--blau); border-color: var(--blau); color: white; }
+.chip.c-basis.active   { background: var(--blau); border-color: var(--blau); }
+.chip.c-erw.active     { background: var(--gruen-dark); border-color: var(--gruen-dark); }
+.chip.c-zelle.active   { background: var(--lila); border-color: var(--lila); }
+.chip.c-adapt.active   { background: var(--gold-dark); border-color: var(--gold-dark); }
+.chip-divider { flex-shrink: 0; width: 1px; align-self: stretch; background: var(--border); margin: 2px 4px; }
+.chip-jump { background: var(--gruen-hauch); border-color: var(--gruen-hell); color: #4a6035; }
+.chip-jump:hover { background: var(--gruen-hell); border-color: var(--gruen); color: #3a5028; }
+
+/* ═══════════════ MAIN ═══════════════ */
+main { max-width: 900px; margin: 0 auto; padding: 0 14px 60px; }
+.section { margin-top: 40px; }
+.section-head { margin-bottom: 6px; }
+.section-eyebrow { font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; font-weight: 700; margin-bottom: 5px; }
+.section-eyebrow.e-basis  { color: var(--blau); }
+.section-eyebrow.e-erw    { color: var(--gruen-dark); }
+.section-eyebrow.e-zelle  { color: var(--lila); }
+.section-eyebrow.e-adapt  { color: var(--gold-dark); }
+.section-title { font-family: 'Playfair Display', serif; font-size: clamp(22px, 5vw, 28px); font-weight: 700; color: var(--blau); line-height: 1.15; }
+.section-sub { font-size: 14px; color: var(--text-light); font-weight: 300; margin-top: 4px; }
+
+.intro-box {
+  border-left: 3px solid var(--blau); border-radius: 0 8px 8px 0;
+  padding: 13px 18px; margin: 16px 0; font-size: 14.5px; line-height: 1.65;
+}
+.intro-box.ib-blau  { background: var(--blau-hell); color: #1e3252; border-color: var(--blau); }
+.intro-box.ib-erw   { background: var(--gruen-hauch); color: #2a4a1e; border-color: var(--gruen-dark); }
+.intro-box.ib-zelle { background: #f2eefa; color: #3e2a60; border-color: var(--lila); }
+.intro-box.ib-adapt { background: #fef9ec; color: #6a4a00; border-color: var(--gold-dark); }
+.intro-box strong { font-weight: 700; }
+
+/* expand-all control */
+.expand-control { display: flex; justify-content: flex-end; margin: 10px 0 14px; }
+.expand-btn {
+  font-size: 12.5px; font-weight: 700; color: var(--blau); background: white;
+  border: 1.5px solid var(--border); border-radius: 30px; padding: 6px 14px;
+  cursor: pointer; font-family: 'Lato', sans-serif; transition: all 0.18s;
+}
+.expand-btn:hover { border-color: var(--blau); background: var(--blau-hell); }
+
+/* ═══════════════ AMPEL LEGENDE ═══════════════ */
+.ampel-legend {
+  display: flex; flex-wrap: wrap; gap: 12px 18px; margin: 14px 0;
+  background: white; border: 1px solid var(--border); border-radius: 10px; padding: 13px 16px;
+}
+.al-item { display: flex; align-items: center; gap: 7px; font-size: 13px; color: var(--text-light); }
+.al-dot { width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0; }
+.al-item strong { color: var(--text); }
+
+/* ═══════════════ NEM CARDS ═══════════════ */
+.cards { display: flex; flex-direction: column; gap: 14px; }
+.card {
+  border: 1px solid var(--border); border-radius: 12px; overflow: hidden; background: white;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.04); transition: box-shadow 0.2s, opacity 0.2s;
+}
+.card.dimmed { opacity: 0.18; }
+.card.hidden { display: none; }
+
+.card-head {
+  padding: 15px 18px; display: flex; align-items: center; gap: 13px; cursor: pointer;
+  user-select: none; -webkit-tap-highlight-color: transparent;
+}
+.ch-basis { background: var(--blau); }
+.ch-erw   { background: var(--gruen-dark); }
+.ch-zelle { background: var(--lila); }
+.ch-adapt { background: var(--gold-dark); }
+.card-num { font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 700; color: rgba(255,255,255,0.42); min-width: 36px; line-height: 1; }
+.card-titlewrap { flex: 1; min-width: 0; }
+.card-title { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; color: white; line-height: 1.15; }
+.card-sub { font-size: 12px; color: rgba(255,255,255,0.72); font-weight: 300; margin-top: 3px; }
+.card-badge { background: rgba(255,255,255,0.18); color: white; font-size: 9.5px; font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase; padding: 4px 9px; border-radius: 30px; white-space: nowrap; flex-shrink: 0; }
+.card-chevron { color: rgba(255,255,255,0.7); font-size: 13px; flex-shrink: 0; transition: transform 0.25s; margin-left: 2px; }
+.card.open .card-chevron { transform: rotate(180deg); }
+
+/* teaser line — visible only when card is collapsed */
+.card-teaser {
+  padding: 0 18px 13px; margin-top: -3px;
+  font-size: 12.5px; color: var(--text-light); line-height: 1.5;
+  display: flex; align-items: center; gap: 7px;
+}
+.card-teaser .tz-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+.tz-basis { background: var(--blau); } .tz-erw { background: var(--gruen-dark); }
+.tz-zelle { background: var(--lila); } .tz-adapt { background: var(--gold-dark); }
+.card.open .card-teaser { display: none; }
+
+.card-body {
+  display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.3s ease;
+}
+.card.open .card-body { grid-template-rows: 1fr; }
+.card-body-inner { overflow: hidden; }
+
+.fields { padding: 16px 18px; display: grid; grid-template-columns: 1fr 1fr; gap: 14px 22px; }
+.field { font-size: 14px; }
+.field-label { font-weight: 700; font-size: 10.5px; letter-spacing: 0.8px; text-transform: uppercase; color: var(--text-light); margin-bottom: 4px; display: flex; align-items: center; gap: 5px; }
+.dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+.db { background: var(--blau); } .dg { background: var(--gruen); }
+.do { background: var(--gold); } .dt { background: var(--terra); } .dr { background: var(--rot-warn); }
+.field-val { color: var(--text); line-height: 1.55; }
+.field-val strong { font-weight: 700; color: var(--blau); }
+.warn { color: var(--rot-warn); font-weight: 700; }
+
+.card-foot {
+  padding: 12px 18px; background: var(--creme); border-top: 1px solid var(--border);
+  display: flex; gap: 7px; flex-wrap: wrap; align-items: center;
+}
+.ampel { display: inline-flex; align-items: center; gap: 5px; font-size: 11px; font-weight: 700; padding: 4px 11px; border-radius: 30px; white-space: nowrap; }
+.ampel-g { background: #e8f8ee; color: var(--ampel-g); }
+.ampel-y { background: #fef3e7; color: var(--ampel-y); }
+.ampel-r { background: #fde8e4; color: var(--ampel-r); }
+.tag { display: inline-flex; align-items: center; gap: 4px; padding: 4px 11px; border-radius: 30px; font-size: 11px; font-weight: 700; white-space: nowrap; }
+.t-def  { background: var(--blau-hell); color: var(--blau); }
+.t-warn { background: #fde8e4; color: var(--rot-warn); }
+.t-ok   { background: #e8f4ea; color: #2d7a3a; }
+.t-gold { background: #fdf5e0; color: #8a6a00; }
+.t-blog { background: var(--blau); color: white; text-decoration: none; transition: background 0.18s; }
+.t-blog:hover { background: var(--blau-tief); }
+
+/* ═══════════════ OMEGA-6 BOX ═══════════════ */
+.omega-box { background: linear-gradient(135deg, var(--blau-tief) 0%, var(--blau) 70%, #2a4a35 100%); color: white; border-radius: 12px; padding: 22px; margin-top: 16px; }
+.omega-title { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; margin-bottom: 10px; }
+.omega-box > p { font-size: 14px; color: rgba(255,255,255,0.85); line-height: 1.65; margin-bottom: 8px; }
+.omega-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 14px; }
+.oc { background: rgba(255,255,255,0.07); border-radius: 8px; padding: 14px 16px; }
+.oc h4 { font-size: 11.5px; font-weight: 700; letter-spacing: 0.7px; text-transform: uppercase; margin-bottom: 8px; }
+.oc.bad h4 { color: #f0a090; } .oc.good h4 { color: var(--gruen-hell); }
+.oc ul { list-style: none; font-size: 13.5px; color: rgba(255,255,255,0.82); line-height: 1.7; }
+.oc.bad ul li::before { content: '✗ '; color: #f0a090; }
+.oc.good ul li::before { content: '✓ '; color: var(--gruen-hell); }
+
+/* ═══════════════ REGELN ═══════════════ */
+.rgrid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.rbox { border-radius: 10px; padding: 16px 18px; }
+.rbox.rot   { background: #fde8e4; border-left: 3px solid var(--rot-warn); }
+.rbox.gruen { background: var(--gruen-hauch); border-left: 3px solid var(--gruen); }
+.rbox.gold  { background: #fef9e7; border-left: 3px solid var(--gold); }
+.rbox.blau  { background: var(--blau-hell); border-left: 3px solid var(--blau); }
+.rbox h4 { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.7px; margin-bottom: 9px; }
+.rbox.rot h4 { color: var(--rot-warn); } .rbox.gruen h4 { color: #3a5a28; }
+.rbox.gold h4 { color: #8a6a00; } .rbox.blau h4 { color: var(--blau); }
+.rbox ul { list-style: none; font-size: 13.5px; line-height: 1.7; color: var(--text); }
+.rbox ul li { padding-left: 14px; position: relative; }
+.rbox ul li::before { content: '·'; position: absolute; left: 3px; font-weight: 700; }
+
+/* ═══════════════ TAGESPLAN ═══════════════ */
+.tplan { display: flex; flex-direction: column; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; background: white; }
+.tslot { display: grid; grid-template-columns: 150px 1fr; border-bottom: 1px solid var(--border); }
+.tslot:last-child { border-bottom: none; }
+.ttime { background: var(--blau); color: white; padding: 16px 14px; display: flex; flex-direction: column; justify-content: center; }
+.ttime-l { font-family: 'Playfair Display', serif; font-size: 15px; font-weight: 700; line-height: 1.25; }
+.ttime-s { font-size: 11px; color: rgba(255,255,255,0.58); margin-top: 3px; font-weight: 300; }
+.tcontent { padding: 14px 16px; display: flex; flex-wrap: wrap; gap: 6px; align-items: flex-start; }
+.pill { border-radius: 30px; padding: 5px 12px; font-size: 12.5px; font-weight: 700; white-space: nowrap; }
+.p-def   { background: var(--blau-hell); color: var(--blau); }
+.p-gruen { background: var(--gruen-hauch); color: #3a5a28; }
+.p-lila  { background: #f0edf7; color: #5a3d8a; }
+.p-gold  { background: #fef9e7; color: #8a6a00; }
+.p-terra { background: #fdf0eb; color: #8a3010; }
+.p-adapt { background: #fdf3e7; color: #7a4a10; }
+.tnote { width: 100%; font-size: 12.5px; color: var(--text-light); margin-top: 6px; font-style: italic; line-height: 1.6; }
+
+/* ═══════════════ BLUTTEST TABELLE ═══════════════ */
+.btab-wrap { overflow-x: auto; border: 1px solid var(--border); border-radius: 12px; -webkit-overflow-scrolling: touch; }
+.btab { width: 100%; border-collapse: collapse; font-size: 13px; min-width: 640px; background: white; }
+.btab th { background: var(--blau); color: white; font-weight: 700; text-align: left; padding: 11px 13px; font-size: 11.5px; letter-spacing: 0.4px; }
+.btab td { padding: 10px 13px; border-bottom: 1px solid var(--border); vertical-align: top; line-height: 1.5; }
+.btab tr:last-child td { border-bottom: none; }
+.btab tr:nth-child(even) td { background: #fafaf8; }
+.btab td strong { color: var(--blau); }
+.btab .mini-ampel { font-size: 10px; padding: 2px 8px; }
+
+/* ═══════════════ LEBENSMITTEL ═══════════════ */
+.food-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.food-card { border: 1px solid var(--border); border-left: 3px solid var(--blau); border-radius: 0 10px 10px 0; padding: 14px 16px; background: white; }
+.food-card.gruen { border-left-color: var(--gruen); }
+.food-card.lila  { border-left-color: var(--lila); }
+.food-card.adapt { border-left-color: var(--gold-dark); }
+.food-nut { font-weight: 700; font-size: 13.5px; color: var(--blau); margin-bottom: 6px; }
+.food-items { font-size: 13px; line-height: 1.6; color: var(--text); margin-bottom: 7px; }
+.food-tip { font-size: 12px; color: var(--text-light); font-style: italic; line-height: 1.55; border-top: 1px solid var(--border); padding-top: 7px; }
+
+.warnbox { background: #fdf3e7; border-left: 3px solid #e67e22; border-radius: 0 10px 10px 0; padding: 14px 18px; margin: 14px 0; font-size: 13.5px; line-height: 1.65; }
+.warnbox strong.wtitle { color: #8a4a00; display: block; margin-bottom: 4px; }
+.warnbox .wtext { color: #5a3a00; }
+
+/* ═══════════════ DR. PULLIGS WORT ═══════════════ */
+.cl-block { background: white; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+.cl-hero { background: var(--blau); color: white; padding: 28px 26px; }
+.cl-quote { font-size: clamp(16px, 4vw, 21px); font-weight: 300; line-height: 1.5; color: var(--gruen-hell); }
+.cl-body { padding: 26px; }
+.cl-sec { margin-bottom: 22px; }
+.cl-sec:last-child { margin-bottom: 0; }
+.cl-stitle { font-family: 'Playfair Display', serif; font-size: 17px; font-weight: 700; color: var(--blau); margin-bottom: 10px; display: flex; align-items: center; gap: 10px; }
+.cl-icon { width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; flex-shrink: 0; }
+.ci-b { background: var(--blau-hell); color: var(--blau); }
+.ci-g { background: var(--gruen-hauch); color: #3a5a28; }
+.ci-t { background: #fdf0eb; color: #8a3010; }
+.ci-w { background: #f0edf7; color: #5a3d8a; }
+.cl-sec p { font-size: 14.5px; line-height: 1.75; color: var(--text); margin-bottom: 9px; }
+.cl-hl { background: var(--gruen-hauch); border-left: 3px solid var(--gruen); border-radius: 0 8px 8px 0; padding: 13px 16px; margin: 12px 0; font-size: 14px; line-height: 1.65; color: #253318; }
+.cl-pillars { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 12px 0; }
+.cl-pillar { background: var(--creme); border-radius: 8px; padding: 14px 16px; font-size: 13.5px; line-height: 1.65; }
+.cl-pillar strong { display: block; font-size: 14px; color: var(--blau); margin-bottom: 5px; }
+.cl-div { height: 1px; background: var(--border); margin: 20px 0; }
+.cl-bloglinks { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 12px; }
+.cl-sign { margin-top: 22px; padding-top: 18px; border-top: 1px solid var(--border); }
+.cl-sign-name { font-size: 17px; color: var(--blau); font-weight: 700; }
+.cl-sign-sub { font-size: 12.5px; color: var(--text-light); font-weight: 300; margin-top: 3px; }
+
+/* ═══════════════ FOOTER ═══════════════ */
+.foot { background: var(--blau); color: rgba(255,255,255,0.7); padding: 32px 24px; margin-top: 50px; }
+.foot-inner { max-width: 900px; margin: 0 auto; }
+.foot strong { color: white; }
+.foot-disclaimer { font-size: 11.5px; color: rgba(255,255,255,0.5); line-height: 1.65; margin-top: 14px; border-top: 1px solid rgba(255,255,255,0.15); padding-top: 14px; }
+.foot-back { display: inline-block; margin-top: 16px; color: var(--gruen-hell); text-decoration: none; font-size: 13.5px; font-weight: 700; }
+.foot-back:hover { text-decoration: underline; }
+
+.no-results { text-align: center; padding: 40px 20px; color: var(--text-light); font-size: 15px; display: none; }
+.no-results.show { display: block; }
+
+/* search result counter */
+.search-count {
+  display: none; margin-top: 18px; padding: 9px 15px;
+  background: var(--blau-hell); border-radius: 9px;
+  font-size: 13px; color: var(--blau); font-weight: 700;
+}
+.search-count.show { display: block; }
+.search-count span { font-weight: 400; color: var(--text-light); }
+
+/* während einer Suche: Abschnitts-Einleitungen ausblenden, nur Treffer-Karten zeigen */
+body.searching .section[data-cat] .section-head,
+body.searching .section[data-cat] .intro-box,
+body.searching .section[data-cat] .ampel-legend,
+body.searching .section[data-cat] .expand-control { display: none; }
+body.searching .section[data-cat] { margin-top: 14px; }
+/* während Suche: alle Nicht-Karten-Bereiche ausblenden (Omega-6, Tagesplan, Bluttest, Lebensmittel, Wort) */
+body.searching .omega-box,
+body.searching .section:not([data-cat]) { display: none; }
+
+/* slim disclaimer strip under the nav */
+.disclaimer-strip {
+  display: flex; align-items: flex-start; gap: 9px;
+  background: #fbfaf6; border: 1px solid var(--border); border-radius: 9px;
+  padding: 11px 15px; margin-top: 22px;
+  font-size: 12px; line-height: 1.55; color: var(--text-light);
+}
+.disclaimer-strip .ds-icon { flex-shrink: 0; font-size: 13px; line-height: 1.5; opacity: 0.8; }
+.disclaimer-strip a { color: var(--blau); text-decoration: underline; text-underline-offset: 2px; }
+.disclaimer-strip a:hover { color: var(--blau-tief); }
+
+/* ═══════════════ MOBILE ═══════════════ */
+@media (max-width: 640px) {
+  .fields { grid-template-columns: 1fr; gap: 12px; }
+  .omega-cols, .rgrid, .food-grid, .cl-pillars { grid-template-columns: 1fr; }
+  .tslot { grid-template-columns: 1fr; }
+  .ttime { padding: 10px 14px; flex-direction: row; align-items: baseline; gap: 8px; }
+  .ttime-l { font-size: 14px; }
+  .ttime-l br { display: none; }
+  .hero { padding: 44px 20px 38px; }
+  .card-head { padding: 14px 15px; gap: 10px; }
+  .card-num { font-size: 22px; min-width: 30px; }
+  .card-title { font-size: 16px; }
+  /* Buttons umbrechen statt horizontal scrollen */
+  .nav-chips { flex-wrap: wrap; overflow-x: visible; gap: 6px; padding-bottom: 0; }
+  .chip-divider { display: none; }
+  .chip-jump { margin-top: 0; }
+}
+@media print {
+  .nav, .save-hint, .expand-control, .foot-back { display: none !important; }
+  .card-body { grid-template-rows: 1fr !important; }
+  .card { break-inside: avoid; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════ HERO ═══════════════ -->
+<header class="hero">
+  <div class="hero-stripe"></div>
+  <div class="hero-inner">
+    <div class="hero-label">Funktionelle Medizin · Ihr Begleiter</div>
+    <h1 class="hero-title">Nährstoff-Guide</h1>
+    <div class="hero-subtitle">Was wann? Womit nicht? Wie viel?</div>
+    <p class="hero-desc">16 Nährstoffe. Klare Regeln. Ein Tagesplan. Lebensmittelquellen. Alles, was Sie wissen müssen — nach den Prinzipien der funktionellen Medizin.</p>
+    <div class="save-hint">Tipp: Diese Seite als Lesezeichen speichern — sie wird mit neuen Erkenntnissen und Blogs ergänzt.</div>
+    <div class="hero-author">
+      <strong>Dr. med. Andreas Pullig</strong>
+      Facharzt für Allgemeinmedizin &amp; Urologie<br>
+      Ganzheitliche &amp; Funktionelle Medizin · Simmern
+    </div>
+  </div>
+</header>
+
+<!-- ═══════════════ STICKY NAV ═══════════════ -->
+<nav class="nav">
+  <div class="nav-inner">
+    <input type="text" class="nav-search" id="search" placeholder="Nährstoff suchen (z.B. Magnesium, Schlaf, Eisen…)" aria-label="Nährstoff suchen">
+    <div class="nav-chips" id="chips">
+      <button class="chip" data-filter="all">Alle 16</button>
+      <button class="chip c-basis" data-filter="basis">Basis</button>
+      <button class="chip c-erw" data-filter="erw">Erweitert</button>
+      <button class="chip c-zelle" data-filter="zelle">Zellebene</button>
+      <button class="chip c-adapt" data-filter="adapt">Adaptogene</button>
+      <span class="chip-divider"></span>
+      <button class="chip chip-jump" data-jump="tagesplan">◷ Tagesplan</button>
+      <button class="chip chip-jump" data-jump="bluttest">🩸 Bluttest</button>
+    </div>
+  </div>
+</nav>
+
+<main>
+  <div class="disclaimer-strip">
+    <span class="ds-icon">ⓘ</span>
+    <span>Dieser Guide dient der allgemeinen Information und ersetzt keine ärztliche Beratung. Alle Dosierungen und Laborwerte sind Richtwerte — die persönliche Anpassung erfolgt gemeinsam mit Ihrem Arzt. <a href="#disclaimer-voll">Vollständiger Hinweis ↓</a></span>
+  </div>
+  <div class="search-count" id="searchCount"></div>
+  <div class="no-results" id="noResults">Kein Nährstoff gefunden. Versuchen Sie einen anderen Suchbegriff.</div>
+
+  <!-- ═══ BASIS ═══ -->
+  <section class="section" data-cat="basis">
+    <span class="anchor" id="basis"></span>
+    <div class="section-head">
+      <div class="section-eyebrow e-basis">Nährstoffe 01–05</div>
+      <h2 class="section-title">Die Basis — Was jeder Körper braucht</h2>
+      <p class="section-sub">Das Fundament der ganzheitlichen Supplementierung — für nahezu jeden sinnvoll.</p>
+    </div>
+    <div class="intro-box ib-blau"><strong>Ihr Begleiter durch die Supplementierung:</strong> Selbst bei ausgewogener Ernährung entstehen Lücken, die Müdigkeit, Immunschwäche und stille Entzündungen verursachen können. Diese fünf Nährstoffe bilden das Fundament.</div>
+    <div class="ampel-legend">
+      <div class="al-item"><div class="al-dot" style="background:var(--ampel-g)"></div><span><strong>Einfach starten</strong> — sicher für die meisten, kein Test nötig</span></div>
+      <div class="al-item"><div class="al-dot" style="background:var(--ampel-y)"></div><span><strong>Test empfohlen</strong> — sinnvoll zu messen</span></div>
+      <div class="al-item"><div class="al-dot" style="background:var(--ampel-r)"></div><span><strong>Nur nach Test</strong> — Überdosierung möglich</span></div>
+    </div>
+    <div class="expand-control"><button class="expand-btn" data-target="basis">Alle ausklappen</button></div>
+    <div class="cards" id="cards-basis"></div>
+  </section>
+
+  <!-- ═══ OMEGA-6 ═══ -->
+  <div class="omega-box" style="max-width:none;">
+    <div class="omega-title">⚠ Die Omega-6-Falle — warum Omega-3 allein oft nicht hilft</div>
+    <p><strong>Das Problem:</strong> Omega-3 und Omega-6 konkurrieren um dasselbe Enzym (Delta-5/6-Desaturase). Bei zu viel Omega-6 verliert Omega-3 diesen Wettkampf. Unser westliches Verhältnis: ca. 15:1 — optimal wären 3–4:1. Wer Omega-3 supplementiert, sollte gleichzeitig Omega-6 drosseln.</p>
+    <div class="omega-cols">
+      <div class="oc bad"><h4>⟶ Omega-6 drosseln</h4><ul><li>Sonnenblumenöl &amp; -margarine</li><li>Distelöl, Maiskeimöl, Sojaöl</li><li>Fast Food &amp; Fertigprodukte</li><li>Chips, industrielle Backwaren</li></ul></div>
+      <div class="oc good"><h4>⟶ Gute Fette bevorzugen</h4><ul><li>Algenöl, Wildlachs, Sardinen, Makrele</li><li>Lein-, Chia-, Hanfsamen</li><li>Olivenöl, Avocado, Walnüsse</li><li>Weidebutter, Ghee</li></ul></div>
+    </div>
+  </div>
+
+  <!-- ═══ ERWEITERT ═══ -->
+  <section class="section" data-cat="erw">
+    <span class="anchor" id="erw"></span>
+    <div class="section-head">
+      <div class="section-eyebrow e-erw">Nährstoffe 06–09</div>
+      <h2 class="section-title">Erweiterte Nährstoffe — bei Bedarf &amp; nach Labor</h2>
+      <p class="section-sub">Erst messen, dann supplementieren.</p>
+    </div>
+    <div class="intro-box ib-erw">Diese Nährstoffe sind bei nachgewiesenem Mangel enorm wichtig — aber auch solche, bei denen Überdosierung Schaden anrichten kann. <strong>Hier gilt: erst messen, dann supplementieren.</strong></div>
+    <div class="expand-control"><button class="expand-btn" data-target="erw">Alle ausklappen</button></div>
+    <div class="cards" id="cards-erw"></div>
+  </section>
+
+  <!-- ═══ ZELLEBENE ═══ -->
+  <section class="section" data-cat="zelle">
+    <span class="anchor" id="zelle"></span>
+    <div class="section-head">
+      <div class="section-eyebrow e-zelle">Nährstoffe 10–13</div>
+      <h2 class="section-title">Zellenergie, Detox &amp; Energie</h2>
+      <p class="section-sub">Mitochondriale Kraft, Entgiftung und der Stoffwechsel-Motor.</p>
+    </div>
+    <div class="intro-box ib-zelle"><strong>Q10 Ubiquinol</strong> ist ab 40 Jahren und bei Statineinnahme unverzichtbar. <strong>NAC</strong> ist der effektivste Weg, Glutathion aufzubauen — das wichtigste körpereigene Antioxidans.</div>
+    <div class="expand-control"><button class="expand-btn" data-target="zelle">Alle ausklappen</button></div>
+    <div class="cards" id="cards-zelle"></div>
+  </section>
+
+  <!-- ═══ ADAPTOGENE ═══ -->
+  <section class="section" data-cat="adapt">
+    <span class="anchor" id="adapt"></span>
+    <div class="section-head">
+      <div class="section-eyebrow e-adapt">Nährstoffe 14–16</div>
+      <h2 class="section-title">Adaptogene &amp; pflanzliche Wirkstoffe</h2>
+      <p class="section-sub">Ashwagandha, Astaxanthin, Berberin.</p>
+    </div>
+    <div class="intro-box ib-adapt">Pflanzliche Wirkstoffe mit guter Datenlage — für Stressresistenz, Zellschutz und Stoffwechsel.</div>
+    <div class="expand-control"><button class="expand-btn" data-target="adapt">Alle ausklappen</button></div>
+    <div class="cards" id="cards-adapt"></div>
+  </section>
+
+  <!-- ═══ GOLDENE REGELN ═══ -->
+  <section class="section">
+    <span class="anchor" id="regeln"></span>
+    <div class="section-head">
+      <div class="section-eyebrow e-basis">Kombinationsregeln</div>
+      <h2 class="section-title">Goldene Kombinationsregeln</h2>
+      <p class="section-sub">Welche Nährstoffe sich verstärken — und welche sich blockieren.</p>
+    </div>
+    <div class="rgrid" style="margin-top:16px;">
+      <div class="rbox rot"><h4>Niemals gleichzeitig</h4><ul><li>Eisen + Kaffee, Tee, Milch (2 Std. Abstand)</li><li>Eisen + Kalzium (blockiert Aufnahme)</li><li>Zink + Kupfer langfristig ohne Blutcheck</li><li>Selen + hohe Vit.-C-Dosis zeitgleich</li><li>Jod ohne Selen (Schilddrüsenschutz!)</li><li>D3 hochdosiert ohne K2</li></ul></div>
+      <div class="rbox gruen"><h4>✓ Diese verstärken sich</h4><ul><li>Eisen + Vitamin C (Aufnahme ×2)</li><li>Vitamin D3 + K2 (immer gemeinsam)</li><li>Selen + Jod (Schutz &amp; Funktion)</li><li>B12 + Folat (Methylierungszyklus)</li><li>Omega-3 + Vitamin D (Entzündung)</li><li>NAC + Q10 (Zellschutz)</li></ul></div>
+      <div class="rbox gold"><h4>⚠ Bei Medikamenten checken</h4><ul><li>Blutverdünner: Omega-3 hoch, Q10</li><li>Schilddrüsenhormone: Eisen 2 Std. Abstand!</li><li>Metformin: B12-Spiegel messen</li><li>Statine: Q10 Ubiquinol immer dazu</li><li>ACE-Hemmer/Nitrate: NAC besprechen</li></ul></div>
+      <div class="rbox blau"><h4>→ Fett- vs. wasserlöslich</h4><ul><li>MIT FETT: D3+K2, Omega-3, Q10, Astaxanthin</li><li>OHNE FETT: Vit. C, B12, NAC, Eisen</li><li>BEIDES: Magnesium, Zink, Selen</li><li>Fettlösliche NEMs: niemals nüchtern</li><li>Kleine Mahlzeit reicht als Fettträger</li></ul></div>
+    </div>
+  </section>
+
+  <!-- ═══ TAGESPLAN ═══ -->
+  <section class="section">
+    <span class="anchor" id="tagesplan"></span>
+    <div class="section-head">
+      <div class="section-eyebrow e-basis">◷ Der Tagesplan</div>
+      <h2 class="section-title">Ein möglicher Tagesplan</h2>
+      <p class="section-sub">Die richtige Reihenfolge über den Tag — damit sich Nährstoffe ergänzen statt blockieren.</p>
+    </div>
+    <div class="intro-box ib-blau"><strong>So lesen Sie diesen Plan:</strong> Hier sind alle 16 vorgestellten Supplemente eingeordnet — das heißt nicht, dass jeder alle nehmen soll. Streichen Sie einfach, was für Sie nicht in Frage kommt. Die übrigen bleiben an ihrem Platz und sind weiterhin sinnvoll angeordnet. Eisen wird <strong>alle 2 Tage</strong> eingenommen (Hepcidin-Mechanismus), Berberin 2× täglich zu den größten Mahlzeiten. Beginnen Sie schrittweise: erst die Basis etablieren, dann nach 2–3 Wochen erweitern.</div>
+    <div class="tplan" style="margin-top:16px;">
+      <div class="tslot">
+        <div class="ttime"><div class="ttime-l">Morgens <br>nüchtern</div><div class="ttime-s">vor dem Frühstück</div></div>
+        <div class="tcontent">
+          <span class="pill p-terra">🔴 Eisen (alle 2 Tage!)</span>
+          <span class="pill p-gruen">+ Vitamin C (nur bei Eisen!)</span>
+          <span class="pill p-lila">NAC</span>
+          <div class="tnote">Eisen + Vit. C zeitgleich — wirkt nur im Darmlumen. Wer kein Eisen nimmt: Vit. C flexibel zu einer anderen Mahlzeit. <strong>Kein Kaffee auf nüchternen Magen</strong> — er reizt die Magenschleimhaut, erhöht Cortisol und hemmt die Eisenaufnahme. Besser: ein Glas Wasser mit frischer Zitrone.</div>
+        </div>
+      </div>
+      <div class="tslot">
+        <div class="ttime"><div class="ttime-l">Morgens <br>zum Frühstück</div><div class="ttime-s">mit Mahlzeit</div></div>
+        <div class="tcontent">
+          <span class="pill p-def">Vitamin D3 + K2</span>
+          <span class="pill p-gruen">B-Komplex + Biotin</span>
+          <span class="pill p-gruen">B12 + Folat</span>
+          <span class="pill p-gruen">Selen</span>
+          <span class="pill p-gruen">Jod</span>
+          <div class="tnote">D3+K2 brauchen Fett. B-Vitamine morgens (energetisierend). Selen &amp; Jod immer zusammen.</div>
+        </div>
+      </div>
+      <div class="tslot">
+        <div class="ttime"><div class="ttime-l">Zwischen <br>den Mahlzeiten</div><div class="ttime-s">ca. 2 Std. nach Frühstück</div></div>
+        <div class="tcontent">
+          <span class="pill p-adapt">Alpha-Liponsäure</span>
+          <div class="tnote">Alpha-Liponsäure ist ein Chelatbildner — sie bindet Metalle wie Eisen und Zink und kann deren Aufnahme hemmen. Mindestens 2 Stunden Abstand zu Mineralien.</div>
+        </div>
+      </div>
+      <div class="tslot">
+        <div class="ttime"><div class="ttime-l">Mittags / <br>Hauptmahlzeit</div><div class="ttime-s">fettreichste Mahlzeit</div></div>
+        <div class="tcontent">
+          <span class="pill p-gold">Omega-3 (EPA+DHA)</span>
+          <span class="pill p-lila">Q10 Ubiquinol</span>
+          <span class="pill p-lila">Astaxanthin</span>
+          <span class="pill p-gruen">Vitamin C (2. Dosis)</span>
+          <span class="pill p-adapt">Berberin</span>
+          <div class="tnote">Fettlösliche Nährstoffe zur fettreichsten Mahlzeit. Berberin direkt zur Mahlzeit — senkt Blutzuckeranstieg.</div>
+        </div>
+      </div>
+      <div class="tslot">
+        <div class="ttime"><div class="ttime-l">Abends <br>zur Mahlzeit</div><div class="ttime-s">zum Abendessen</div></div>
+        <div class="tcontent">
+          <span class="pill p-gruen">Zink</span>
+          <span class="pill p-adapt">Berberin</span>
+          <span class="pill p-adapt">Ashwagandha</span>
+          <div class="tnote">Zink mit Mahlzeit (nüchtern: Übelkeit). Ashwagandha abends für Cortisol-Senkung &amp; Schlafvorbereitung.</div>
+        </div>
+      </div>
+      <div class="tslot">
+        <div class="ttime"><div class="ttime-l">Abends <br>vor dem Schlafen</div><div class="ttime-s">1–2 Std. nach Zink</div></div>
+        <div class="tcontent">
+          <span class="pill p-def">Magnesium (Glycinat)</span>
+          <div class="tnote">Magnesium fördert Tiefschlaf. Abstand zu Zink halten.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ BLUTTEST ═══ -->
+  <section class="section">
+    <span class="anchor" id="bluttest"></span>
+    <div class="section-head">
+      <div class="section-eyebrow e-erw">🩸 Bluttest-Übersicht</div>
+      <h2 class="section-title">Wann zum Bluttest?</h2>
+      <p class="section-sub">Optimale Zielwerte — nicht nur „Normbereich".</p>
+    </div>
+    <div class="intro-box ib-erw"><strong>Normbereich ≠ optimal.</strong> Laborreferenzwerte bilden den Durchschnitt einer häufig mangelhaft versorgten Bevölkerung ab. In der funktionellen Medizin zählen Optimalwerte — der Bereich, in dem der Körper wirklich gut funktioniert.</div>
+    <div class="warnbox">
+      <strong class="wtitle">⚠ Vor Blutabnahmen pausieren</strong>
+      <span class="wtext"><strong>Biotin (B7)</strong> mindestens 48 Stunden vorher absetzen — auch wenn es im B-Komplex enthalten ist. Viele Labortests (Schilddrüse, Hormone, Troponin, Tumormarker) nutzen Biotin-basierte Verfahren. Hohe Biotin-Dosen verfälschen diese Ergebnisse erheblich. Alle anderen Supplemente in diesem Guide müssen vor einer Standardblutabnahme nicht pausiert werden.</span>
+    </div>
+    <div class="btab-wrap" style="margin-top:14px;">
+      <table class="btab">
+        <thead><tr><th>Nährstoff</th><th>Ampel</th><th>Was &amp; Wann testen</th><th>Optimaler Zielwert</th><th>Hinweis</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Vitamin D3</strong></td><td><span class="ampel ampel-y mini-ampel">🟡</span></td><td>25-OH-Vit.D · vor Start &amp; nach 3 Mo.</td><td>60–80 ng/ml</td><td>Häufig massiv untertherapiert</td></tr>
+          <tr><td><strong>Omega-3</strong></td><td><span class="ampel ampel-g mini-ampel">🟢</span></td><td>Omega-3-Index nach 3 Mo.</td><td>&gt; 8 %</td><td>Test optional, aber aufschlussreich</td></tr>
+          <tr><td><strong>Magnesium</strong></td><td><span class="ampel ampel-g mini-ampel">🟢</span></td><td>Erythrozyten-Mg (nicht Serum!)</td><td>2,0–2,4 mmol/l</td><td>Serum-Mg fast wertlos</td></tr>
+          <tr><td><strong>Vitamin C</strong></td><td><span class="ampel ampel-g mini-ampel">🟢</span></td><td>Nicht nötig</td><td>Symptomkontrolle</td><td>—</td></tr>
+          <tr><td><strong>Zink</strong></td><td><span class="ampel ampel-y mini-ampel">🟡</span></td><td>Zink Serum nach 8 Wochen</td><td>14–18 µmol/l</td><td>Kupfer bei Langzeit-Zink prüfen</td></tr>
+          <tr><td><strong>Eisen / Ferritin</strong></td><td><span class="ampel ampel-r mini-ampel">🔴</span></td><td>Ferritin + Transf.sättigung + Hb + CRP</td><td>Ferritin: 80–150 ng/ml</td><td>CRP immer mitbestimmen — Entzündung erhöht Ferritin künstlich</td></tr>
+          <tr><td><strong>B12 (aktiv)</strong></td><td><span class="ampel ampel-y mini-ampel">🟡</span></td><td>Holotranscobalamin + HCY + MCV</td><td>Holo-TC &gt; 50 · HCY &lt; 9</td><td>Serum-B12 unzuverlässig</td></tr>
+          <tr><td><strong>Selen</strong></td><td><span class="ampel ampel-r mini-ampel">🔴</span></td><td>Vollblut-Selen nach 3 Mo.</td><td>120–150 µg/l</td><td>Toxisch ab 400 µg täglich!</td></tr>
+          <tr><td><strong>Jod / Schilddrüse</strong></td><td><span class="ampel ampel-r mini-ampel">🔴</span></td><td>TSH, fT3, fT4, Anti-TPO · Jod im Vollblut</td><td>TSH 0,5–2,0 · fT3 oben</td><td>Vor jeder Jod-Supplementierung</td></tr>
+          <tr><td><strong>Q10, NAC</strong></td><td><span class="ampel ampel-g mini-ampel">🟢</span></td><td>Nicht nötig</td><td>Klinisch geleitet</td><td>Bei Statinen: Q10 immer</td></tr>
+          <tr><td><strong>B-Komplex, Biotin</strong></td><td><span class="ampel ampel-g mini-ampel">🟢</span></td><td>Nicht nötig</td><td>Symptomkontrolle</td><td>Biotin: vor Bluttest 48 Std. pausieren!</td></tr>
+          <tr><td><strong>Alpha-Liponsäure</strong></td><td><span class="ampel ampel-g mini-ampel">🟢</span></td><td>Blutzucker bei Diabetikern</td><td>Symptomkontrolle</td><td>Neuropathie: ärztlich begleiten</td></tr>
+          <tr><td><strong>Ashwagandha</strong></td><td><span class="ampel ampel-g mini-ampel">🟢</span></td><td>Bei Schilddrüsenerkr.: TSH</td><td>Klinisch geleitet</td><td>Bei Schilddrüsenerkrankung: Kontrolle</td></tr>
+          <tr><td><strong>Astaxanthin</strong></td><td><span class="ampel ampel-g mini-ampel">🟢</span></td><td>Nicht nötig</td><td>Klinisch geleitet</td><td>Sehr sicher, keine Toxizität bekannt</td></tr>
+          <tr><td><strong>Berberin</strong></td><td><span class="ampel ampel-g mini-ampel">🟢</span></td><td>Optional HbA1c als Verlauf</td><td>HbA1c &lt; 5,7 %</td><td>Bei Diabetesmedikamenten: erst nach Absprache</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ═══ LEBENSMITTEL ═══ -->
+  <section class="section">
+    <span class="anchor" id="lebensmittel"></span>
+    <div class="section-head">
+      <div class="section-eyebrow e-erw">Aus der Natur</div>
+      <h2 class="section-title">Nährstoffe aus Lebensmitteln</h2>
+      <p class="section-sub">Was die Natur bereithält — die besten natürlichen Quellen.</p>
+    </div>
+    <div class="intro-box ib-erw"><strong>Ernährung kommt zuerst, Supplementierung ergänzt.</strong> Hier die wichtigsten natürlichen Quellen im Überblick.</div>
+    <div class="warnbox">
+      <strong class="wtitle">⚠ Qualität bei tierischen Lebensmitteln</strong>
+      <span class="wtext">Was das Tier belastet, landet auf dem Teller. <strong>Fleisch, Geflügel und Eier</strong> immer in Bio- und Weidequalität. <strong>Fisch</strong> möglichst Wildfang aus sauberen Gewässern — große Raubfische (Thunfisch, Schwertfisch) können Quecksilber anreichern. <strong>Innereien</strong> sind Reinigungs- und Filterorgane — sie speichern Schadstoffe. Wenn überhaupt: nur in absoluter Bio-Qualität und nicht regelmäßig.</span>
+    </div>
+    <div class="food-grid" style="margin-top:14px;">
+      <div class="food-card"><div class="food-nut">01 · Vitamin D3</div><div class="food-items">Wildlachs, Sardinen, Makrele, Hering · Eigelb (Freiland) · Pilze (Sonne!)</div><div class="food-tip">Pilze 30 Min. Sonne = deutlich mehr D3 — Lamellen nach oben. Fisch: auf Herkunft achten.</div></div>
+      <div class="food-card gruen"><div class="food-nut">02 · Omega-3 (EPA/DHA)</div><div class="food-items">Wildlachs, Sardinen, Makrele, Hering, Forelle · Leinsamen, Chiasamen (ALA) · Walnüsse · Algen</div><div class="food-tip">ALA wird nur zu 5–10 % in EPA/DHA umgewandelt. Quecksilber bei großen Raubfischen beachten.</div></div>
+      <div class="food-card"><div class="food-nut">03 · Magnesium</div><div class="food-items">Kürbiskerne, Mandeln, Cashews · Dunkle Schokolade (≥85 %) · Spinat, Mangold · Hülsenfrüchte · Buchweizen</div><div class="food-tip">Phytate in Nüssen &amp; Hülsenfrüchten hemmen Aufnahme — einweichen hilft.</div></div>
+      <div class="food-card gruen"><div class="food-nut">04 · Vitamin C</div><div class="food-items">Acerola, Hagebutte, Sanddorn · Paprika (rot &gt; grün!) · Petersilie · Kiwi · Brokkoli, Grünkohl</div><div class="food-tip">Hitze zerstört Vit. C — roh oder kurz gedünstet.</div></div>
+      <div class="food-card"><div class="food-nut">05 · Zink</div><div class="food-items">Rindfleisch, Lammfleisch (Bio/Weide!) · Kürbiskerne · Cashews · Hülsenfrüchte, Vollkorn · Austern (auf Herkunft achten)</div><div class="food-tip">Tierisches Zink besser verfügbar. Austern nicht täglich — sie filtern Wasser.</div></div>
+      <div class="food-card gruen"><div class="food-nut">06 · Eisen</div><div class="food-items">Rotes Fleisch (Bio/Weide!) · Linsen, Kichererbsen · Spinat (+ Vit. C!) · Kürbiskerne · Quinoa · Leber (selten, nur Bio)</div><div class="food-tip">Häm-Eisen (Fleisch) 2–3× besser aufnehmbar. Immer in Bio/Weide-Qualität.</div></div>
+      <div class="food-card lila"><div class="food-nut">07 · Vitamin B12</div><div class="food-items">Sardinen, Makrele, Lachs (Wildfang!) · Meeresfrüchte · Eier (Bio/Freiland!) · Käse · Leber/Herz (selten, nur Bio)</div><div class="food-tip">Kaum pflanzlich verfügbar — Veganer MÜSSEN supplementieren.</div></div>
+      <div class="food-card gruen"><div class="food-nut">08 · Selen</div><div class="food-items">Paranuss (1–2 Nüsse = Tagesbedarf!) · Wildlachs, Thunfisch · Eier · Sonnenblumenkerne · Pilze</div><div class="food-tip">Paranuss: Selengehalt schwankt regional stark — nicht überdosieren.</div></div>
+      <div class="food-card"><div class="food-nut">09 · Jod</div><div class="food-items">Meeresfrüchte, Fisch · Meeresalgen (stark schwankend!) · Jodiertes Salz · Milchprodukte · Eier</div><div class="food-tip">Algen: unkontrolliert hohes Jod möglich — nur maßvoll.</div></div>
+      <div class="food-card lila"><div class="food-nut">10–11 · Q10 &amp; NAC</div><div class="food-items"><strong>Q10:</strong> Leber, Herz, Sardinen, Erdnüsse, Brokkoli · <strong>NAC/Cystein:</strong> Geflügel, Eier, Knoblauch, Zwiebeln, Brokkoli</div><div class="food-tip">Über 40 J.: Eigenproduktion Q10 stark reduziert.</div></div>
+      <div class="food-card adapt"><div class="food-nut">12–13 · B-Komplex &amp; Biotin</div><div class="food-items">Leber, Fleisch · Hülsenfrüchte, Vollkorn · Hefe, Pilze · Nüsse · Eigelb (Biotin!) · Avocado</div><div class="food-tip">Rohes Eiweiß blockiert Biotin — Eier immer gekocht.</div></div>
+      <div class="food-card adapt"><div class="food-nut">14–15 · Alpha-Lipons. · Astaxanthin</div><div class="food-items"><strong>Alpha-Liponsäure:</strong> Leber, Spinat, Brokkoli, Tomaten · <strong>Astaxanthin:</strong> Wildlachs, Forelle, Garnelen</div><div class="food-tip">Astaxanthin: Farbe von Lachs &amp; Garnelen kommt direkt aus Algen.</div></div>
+    </div>
+  </section>
+
+  <!-- ═══ DR. PULLIGS WORT ═══ -->
+  <section class="section">
+    <span class="anchor" id="wort"></span>
+    <div class="section-head">
+      <div class="section-eyebrow e-zelle">Ein persönliches Wort</div>
+      <h2 class="section-title">Dr. Pulligs Wort</h2>
+    </div>
+    <div class="cl-block" style="margin-top:16px;">
+      <div class="cl-hero">
+        <div class="cl-quote">Supplemente sind ein Werkzeug. Kein Fundament. Wer das Fundament vergisst, baut auf Sand — und wundert sich, warum er sich trotz allem nicht wirklich besser fühlt.</div>
+      </div>
+      <div class="cl-body">
+        <div class="cl-sec">
+          <div class="cl-stitle"><div class="cl-icon ci-b">⬡</div>Supplementieren — ja. Aber warum klappt es oft nicht allein?</div>
+          <p>Die Idee hinter diesem Guide ist einfach und richtig: Wir haben spezifische Nährstofflücken, und die lassen sich gezielt schließen. Und es hilft. Ich sehe das täglich in der Praxis.</p>
+          <p>Aber ich sehe genauso täglich: Menschen, die jahrelang supplementieren — und sich dennoch nicht wirklich erholt fühlen. Die Präparate sind nicht schlecht. Supplemente allein können nur nicht reparieren, was darunter liegt.</p>
+          <div class="cl-hl"><strong>Die funktionelle Medizin fragt nicht nur „Was fehlt?" — sie fragt: „Warum fehlt es? Und was verhindert, dass der Körper wieder ins Gleichgewicht findet?"</strong></div>
+        </div>
+        <div class="cl-div"></div>
+        <div class="cl-sec">
+          <div class="cl-stitle"><div class="cl-icon ci-g">⬡</div>Der Darm — die Wurzel</div>
+          <p>Ich kann die hochwertigsten Nährstoffe verschreiben — wenn der Darm sie nicht aufnimmt, kommen sie nie an. Chronischer Stress, verarbeitete Lebensmittel, Antibiotika und Schlafmangel schädigen die Darmschleimhaut und das Mikrobiom. Die Folge: Nährstoffe werden schlechter aufgenommen, Entzündungsbotenstoffe gelangen ins Blut.</p>
+          <div class="cl-pillars">
+            <div class="cl-pillar"><strong>Was dem Darm gut tun kann</strong>Fermentierte Lebensmittel, Ballaststoffe, Knochenbrühe, Pausen zwischen Mahlzeiten, L-Glutamin, Zink — und: Stress ehrlich reduzieren.</div>
+            <div class="cl-pillar"><strong>Was den Darm belastet</strong>Zucker, Omega-6-Überschuss, Alkohol, dauerhafter NSAID-Gebrauch, Schlafmangel, Cortisol-Dauerstress, Hetze beim Essen.</div>
+          </div>
+          <div class="cl-hl"><strong>Wichtig:</strong> Das gilt für einen grundsätzlich gesunden Darm. Bei bestehenden Beschwerden wie Reizdarm oder einer Dünndarmfehlbesiedlung (SIBO) können gerade fermentierte Lebensmittel und reichlich Ballaststoffe die Symptome zunächst verstärken. Hier ist ein behutsames, individuell begleitetes Vorgehen nötig — mehr dazu im Darm-Blog.</div>
+          <div class="cl-bloglinks" id="wort-darm"></div>
+        </div>
+        <div class="cl-div"></div>
+        <div class="cl-sec">
+          <div class="cl-stitle"><div class="cl-icon ci-t">⬡</div>Stress, Nebennieren &amp; der Teufelskreis</div>
+          <p>Chronischer Stress ist vielleicht der größte Nährstoffräuber, den wir kennen. Er verbraucht Magnesium, Vitamin C, B-Vitamine und Zink — und schädigt gleichzeitig den Darm, der diese Nährstoffe aufnehmen soll. Die Nebennieren geraten in Dauerüberlastung. Das Ergebnis: schlechter Schlaf, morgens erschöpft, nachmittags ein Einbruch, abends plötzlich hellwach.</p>
+          <div class="cl-hl"><strong>Supplementieren kann die Nebennieren unterstützen.</strong> Aber wenn die Stressquelle fortbesteht, ist das wie Wasser in ein Fass ohne Boden zu füllen.</div>
+          <div class="cl-bloglinks" id="wort-stress"></div>
+        </div>
+        <div class="cl-div"></div>
+        <div class="cl-sec">
+          <div class="cl-stitle"><div class="cl-icon ci-w">⬡</div>Schlaf, Leben &amp; das, was kein Labor misst</div>
+          <p>Kein Supplement der Welt ersetzt einen guten Schlaf. Im Tiefschlaf repariert der Körper, was tagsüber beschädigt wurde — Zellen, Hormone, Immunsystem, Gehirn. <strong>Wer dauerhaft schlecht schläft, supplementiert gegen einen Strom, der stärker ist als jede Kapsel.</strong></p>
+          <p>Und dann ist da noch etwas, das kein Labor messen kann: die Lebenssituation selbst. Menschen, die in Verhältnissen feststecken, die sie zermürben — in Jobs, Beziehungen, einem Alltag, der mehr „Müssen" ist als „Wollen". Der Körper weiß das. Er spricht darüber, durch Erschöpfung, Schlafstörungen, das diffuse Gefühl, dass etwas nicht stimmt.</p>
+          <p>Manchmal braucht es Supplemente genau dafür: <strong>um genug Kraft zurückzugewinnen, dass man wieder klar denken kann.</strong> Das ist der erste Schritt zurück zur eigenen Handlungsfähigkeit. Der Schritt danach gehört Ihnen.</p>
+          <div class="cl-bloglinks" id="wort-schlaf"></div>
+          <div class="cl-sign">
+            <div class="cl-sign-name">Dr. med. Andreas Pullig</div>
+            <div class="cl-sign-sub">Facharzt für Allgemeinmedizin &amp; Urologie · Ganzheitliche &amp; Funktionelle Medizin · Simmern</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ═══════════════ FOOTER ═══════════════ -->
+<footer class="foot">
+  <div class="foot-inner">
+    <strong>Dr. med. Andreas Pullig</strong> · Ganzheitliche &amp; Funktionelle Medizin · Simmern<br>
+    <span style="font-size:13px;">Stand: Juni 2026</span>
+    <a href="https://drpullig.com/literatur" class="foot-back">← Zurück zur Literatur-Übersicht</a>
+    <div class="foot-disclaimer" id="disclaimer-voll">Dieser Guide dient ausschließlich der allgemeinen Information und ersetzt in keinem Fall eine individuelle ärztliche Untersuchung, Diagnose oder Behandlung. Alle genannten Dosierungen, Laborwerte und Empfehlungen sind allgemeine Richtwerte. Die persönliche Anpassung der Supplementierung erfolgt immer gemeinsam mit dem behandelnden Arzt. Bitte konsultieren Sie bei gesundheitlichen Fragen stets medizinisches Fachpersonal.</div>
+  </div>
+</footer>
+
+<!-- ═══════════════ SCHEMA.ORG (SEO Rich Results) ═══════════════ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MedicalWebPage",
+  "name": "Nährstoff-Guide – Dr. med. Andreas Pullig",
+  "description": "16 wichtige Nährstoffe verständlich erklärt nach den Prinzipien der funktionellen Medizin.",
+  "url": "https://drpullig.com/naehrstoff-guide",
+  "inLanguage": "de",
+  "author": {
+    "@type": "Physician",
+    "name": "Dr. med. Andreas Pullig",
+    "medicalSpecialty": "Allgemeinmedizin, Urologie, Funktionelle Medizin",
+    "address": { "@type": "PostalAddress", "addressLocality": "Simmern", "addressCountry": "DE" }
+  },
+  "about": { "@type": "MedicalEntity", "name": "Nahrungsergänzungsmittel und Mikronährstoffe" }
+}
+</script>
+
+<script>
+/* ════════════════════════════════════════════════════════════════
+   DATEN: Alle 16 Nährstoffe.
+   Blog-Links: blogs:[]  → kein Button.  Sobald URL eingetragen → Button erscheint.
+   ════════════════════════════════════════════════════════════════ */
+const NEM = [
+  { id:"vitamin-d", teaser:"Immunsystem · Knochen · Hormon · immer mit K2", cat:"basis", num:"01", title:"Vitamin D3 + K2", sub:"Das Fundament · immer gemeinsam einnehmen", badge:"Täglich",
+    keywords:"vitamin d d3 k2 mk7 knochen immunsystem hormon",
+    wofuer:"Immunsystem, Knochen, Zähne &amp; Muskeln, Stimmung, Hormonregulation, Herz-Kreislauf. D3 ist kein Vitamin — es ist ein Hormon, das jede Zelle steuert. K2 dirigiert Kalzium in die Knochen, nicht in die Gefäße.",
+    dosis:"<strong>D3: 2.000–5.000 IE täglich</strong> je nach Ausgangsspiegel · <strong>K2: 100–200 µg täglich</strong> (MK-7). Niemals D3 ohne K2 hochdosieren!",
+    wann:"<strong>Morgens zum Frühstück</strong> — fettlöslich. Olivenöl, Avocado oder Butter als Fettträger.",
+    nicht:"<span class='warn'>Hochdosis-Kalzium</span> ohne K2. Nicht nüchtern.",
+    ampel:"y", foot:[{t:"warn",x:"🩸 nach 3 Monaten"},{t:"ok",x:"Ziel: 60–80 ng/ml"}],
+    blogs:[{label:"Zum Blog", url:"https://drpullig.com/blog/vitamin-d-herbst"}] },
+
+  { id:"omega-3", teaser:"Entzündungsbremse · Gehirn · Herz · Algenöl bevorzugen", cat:"basis", num:"02", title:"Omega-3 (EPA + DHA)", sub:"Entzündungsbremse · Gehirn · Herz · Zellmembran", badge:"Täglich",
+    keywords:"omega 3 epa dha fischöl algenöl entzündung gehirn herz konzentration gelenke augen",
+    wofuer:"Chronische Entzündungen stoppen, Herzschutz, Gehirnfunktion, Gelenke, Haut. DHA ist essenzieller Baustein jeder Zellmembran — besonders Gehirn- und Nervenzellen. EPA wirkt entzündungshemmend.",
+    dosis:"<strong>2–3 g EPA+DHA täglich</strong> — stets den EPA+DHA-Gehalt prüfen. <strong>Algenöl bevorzugen</strong> — Fische holen ihr Omega-3 aus Mikroalgen. Drogerieware: oft wenig EPA/DHA, viele Füllöle, häufig ranzig.",
+    wann:"<strong>Mit der fettreichsten Mahlzeit</strong> — erhöht Aufnahme um bis zu 70 %. Kühl und dunkel lagern.",
+    nicht:"Bei hohen Dosen (&gt; 4 g) und <span class='warn'>Marcumar</span>: erst nach Absprache mit dem Arzt. Bei normalen Dosierungen (2–3 g) ist das Blutungsrisiko nach aktueller Evidenz klinisch kaum relevant.",
+    ampel:"g", foot:[{t:"gold",x:"Omega-3-Index nach 3 Monaten"},{t:"ok",x:"Ziel: &gt; 8 %"}],
+    blogs:[{label:"Zum Blog", url:"https://drpullig.com/blog/omega-3-was-sie-wissen-muessen"}] },
+
+  { id:"magnesium", teaser:"Schlaf · Nerven · Muskeln · Cortisol · abends", cat:"basis", num:"03", title:"Magnesium", sub:"Das Mineral der Ruhe · über 600 Enzyme", badge:"Täglich",
+    keywords:"magnesium schlaf nerven muskel stress cortisol glycinat müde müdigkeit erschöpfung erschöpft",
+    wofuer:"Nervenberuhigung, Schlaf, Muskelentspannung, Cortisol-Regulation, Herzrhythmus, Blutzucker, Energieproduktion (ATP). Chronischer Stress verbraucht Magnesium massiv.",
+    dosis:"<strong>300–400 mg elementares Magnesium täglich.</strong> Glycinat (sanft, Schlaf), Malat (Energie), Taurinat (Herz). Oxid meiden!",
+    wann:"<strong>Abends vor dem Schlafen</strong> — 1–2 Std. nach Zink (leichte Konkurrenz bei gleichzeitiger Einnahme). Fördert Tiefschlaf.",
+    nicht:"Nicht zeitgleich mit <span class='warn'>Kalzium oder Eisen</span>. Kein Kaffee oder Tee dazu.",
+    ampel:"g", foot:[{t:"def",x:"🩸 Nur Erythrozyten-Mg aussagekräftig"}],
+    blogs:[{label:"Zum Blog", url:"https://drpullig.com/blog/biochemie-der-ruhe"}] },
+
+  { id:"vitamin-c", teaser:"Immunschutz · Kollagen · Cortisol-Puffer · morgens", cat:"basis", num:"04", title:"Vitamin C", sub:"Der Allrounder · Immunschutz · Kollagen · Cortisol-Puffer", badge:"Täglich",
+    keywords:"vitamin c immunsystem kollagen cortisol stress antioxidans acerola gelenke",
+    wofuer:"Immunschutz, Kollagenbildung (Haut, Gelenke, Gefäße), Antioxidans, Cortisol-Puffer, Wundheilung. Wird unter Stress massiv verbraucht.",
+    dosis:"<strong>500–1.000 mg täglich</strong> in 2 Dosen. Ideal: <strong>Vitamin-C-Komplex</strong> mit Bioflavonoiden (Rutin, Hesperidin) sowie <strong>Acerola und Hagebutte</strong>. <strong>Liposomales Vit. C</strong> = höchste Bioverfügbarkeit.",
+    wann:"<strong>Morgens und mittags</strong> (leicht stimulierend — abends meiden). Wer Eisen supplementiert: Vitamin C unbedingt zeitgleich nehmen — es wandelt Eisen in die aufnehmbare Form um. Dieses Fenster ist kurz.",
+    nicht:"Nicht mit <span class='warn'>aluminiumhaltigen Antazida</span> (Säureblockern). Nicht hochdosiert zeitgleich mit Selen.",
+    ampel:"g", foot:[{t:"ok",x:"Bluttest nicht erforderlich"}],
+    blogs:[] },
+
+  { id:"zink", teaser:"Immunsystem · Schilddrüse · Haut · abends · mit Pause", cat:"basis", num:"05", title:"Zink", sub:"Der Immundirigent · Schilddrüse · Testosteron · Haut", badge:"Täglich",
+    keywords:"zink immunsystem schilddrüse testosteron haut haare kupfer",
+    wofuer:"Immunsystem, Wundheilung, Schilddrüse (T3-Synthese!), Testosteron, Haut &amp; Haare, Insulinfunktion, über 300 Enzymprozesse. Häufig unbemerkt im Mangel — Symptome wie Müdigkeit, Haarausfall oder häufige Infekte werden selten damit in Verbindung gebracht.",
+    dosis:"<strong>15–25 mg täglich.</strong> Zinkpicolinat, Zinkcitrat, Zinkglycinat. <strong>Wichtig:</strong> Zink und Kupfer konkurrieren um denselben Aufnahmeweg. Zu viel Zink über längere Zeit verdrängt Kupfer. Deshalb: nicht dauerhaft über 30 mg täglich und alle 2–3 Monate pausieren.",
+    wann:"<strong>Abends zur Abendmahlzeit.</strong> Magnesium 1–2 Std. danach kurz vor dem Schlafen.",
+    nicht:"<span class='warn'>Eisen, Kupfer, Kalzium</span> (2 Std. Abstand). <span class='warn'>Kaffee &amp; Tee</span> hemmen stark.",
+    ampel:"y", foot:[{t:"warn",x:"🩸 Zink im Serum nach 8 Wochen"},{t:"gold",x:"Max. 6–8 Wochen ohne Pause"}],
+    blogs:[] },
+
+  { id:"eisen", teaser:"Energie · Ferritin · Haarwuchs · alle 2 Tage · erst testen", cat:"erw", num:"06", title:"Eisen", sub:"Der Energieträger · Ferritin ist der entscheidende Wert", badge:"Alle 2 Tage",
+    keywords:"eisen ferritin energie müdigkeit müde erschöpfung erschöpft haare haarausfall blut hepcidin konzentration",
+    wofuer:"Sauerstofftransport, Energie (ATP), Haarwuchs, Kognition, Immunfunktion, Schilddrüsenhormone. Ferritin unter 50 ng/ml = funktioneller Eisenmangel — auch wenn Hämoglobin noch normal ist!",
+    dosis:"<strong>14–100 mg elementares Eisen</strong> je nach Defizit. <strong>Eisenbisglycinat</strong> = magenfreundlich. <strong>Alle 2 Tage effizienter als täglich:</strong> Nach jeder Einnahme schüttet die Leber Hepcidin aus, das die Aufnahme blockiert. Erst nach ca. 24 Stunden sinkt der Spiegel — dann ist der nächste Tag deutlich effektiver.",
+    wann:"<strong>Morgens nüchtern + Vitamin C zeitgleich.</strong> Vitamin C wandelt Eisen in die aufnehmbare Form (Fe²⁺) um. Wer das Vitamin C erst Stunden später nimmt, verpasst dieses kurze Fenster.",
+    nicht:"<span class='warn'>Kaffee, Tee, Milch, Kalzium, Magnesium, Zink</span> — mind. 2 Std. Abstand! Nicht mit Schilddrüsenhormonen.",
+    ampel:"r", foot:[{t:"warn",x:"🩸 Ferritin + Transferrinsättigung + Hb"},{t:"ok",x:"Ziel: 80–150 ng/ml"}],
+    blogs:[{label:"Eisen", url:"https://drpullig.com/blog/eisen-lebenselixier"},{label:"Eisen &amp; Aminosäuren", url:"https://drpullig.com/blog/eisen-aminosaeuren"}] },
+
+  { id:"b12-folat", teaser:"Nerven · Energie · Homocystein · Methylcobalamin", cat:"erw", num:"07", title:"Vitamin B12 + Folat", sub:"Die Nervennahrung · Homocystein · DNA-Synthese", badge:"Täglich",
+    keywords:"b12 folat folsäure methylcobalamin homocystein nerven vegan mthfr energie müde müdigkeit erschöpfung erschöpft konzentration",
+    wofuer:"Nervensystem, DNA-Synthese, Energiestoffwechsel, Homocystein senken (Herzschutz!), Stimmung, Blutbildung. Veganer: fast immer mangelhaft!",
+    dosis:"<strong>B12: 500–1.000 µg Methylcobalamin</strong> (NICHT Cyanocobalamin!). <strong>Folat: 400–800 µg Methylfolat</strong> (NICHT synthetische Folsäure — bei der häufigen Genvariante MTHFR kann der Körper Folsäure nicht richtig umwandeln).",
+    wann:"<strong>Morgens, nüchtern oder zum Frühstück.</strong> B12 energetisierend — abends vermeiden.",
+    nicht:"Keine synthetische Folsäure bei MTHFR-Mutation. <strong>Bei Metformin:</strong> Metformin blockiert die B12-Aufnahme langfristig — B12 unbedingt supplementieren und Spiegel kontrollieren.",
+    ampel:"y", foot:[{t:"warn",x:"🩸 Holotranscobalamin + Homocystein"},{t:"ok",x:"Ziel HCY: &lt; 9 µmol/l"}],
+    blogs:[] },
+
+  { id:"selen", teaser:"Schilddrüse (T4→T3) · Entgiftung · ab 400 µg toxisch", cat:"erw", num:"08", title:"Selen", sub:"Der Schilddrüsenhüter · Entgiftung · Antioxidans", badge:"Täglich",
+    keywords:"selen schilddrüse t3 t4 entgiftung antioxidans selenomethionin",
+    wofuer:"Umwandlung T4 → T3 (aktives Schilddrüsenhormon!), Glutathionperoxidase, Schwermetallentgiftung, Immunsystem, Spermaqualität. Deutschland ist chronisches Selenmangelland!",
+    dosis:"<strong>100–200 µg täglich.</strong> <strong>Selenomethionin</strong> (organisch) = ~90 % Bioverfügbarkeit. <strong>Natriumselenit</strong> (anorganisch) = günstiger, nur ~50 % und reagiert mit Vitamin C. <span class='warn'>⚠ Bereits ab 400 µg täglich toxisch!</span>",
+    wann:"<strong>Morgens mit kleiner Mahlzeit.</strong> Nicht abends. Selen immer <strong>vor</strong> Jod aufbauen — es schützt die Schilddrüse vor oxidativem Stress durch Jod.",
+    nicht:"Nicht zeitgleich mit <span class='warn'>hohen Vitamin-C-Dosen</span> (hemmt Selenaufnahme).",
+    ampel:"r", foot:[{t:"warn",x:"🩸 PFLICHT: Vollblut-Selen nach 3 Mo."},{t:"ok",x:"Ziel: 120–150 µg/l"}],
+    blogs:[] },
+
+  { id:"jod", teaser:"Schilddrüse · Energie · nie ohne Selen · erst testen", cat:"erw", num:"09", title:"Jod", sub:"Der stille Dirigent · Schilddrüse · Energie · Brustdrüse", badge:"Täglich",
+    keywords:"jod schilddrüse t3 t4 energie hashimoto kaliumjodid müde müdigkeit erschöpfung erschöpft",
+    wofuer:"Schilddrüsenhormone T3 &amp; T4 bestehen zu 65 % aus Jod. Energiestoffwechsel, Wärmeregulation, Gehirnentwicklung, Brustdrüsengesundheit. Jodmangel führt zur stillen Schilddrüsenunterfunktion — oft über Jahre unentdeckt.",
+    dosis:"<strong>150–200 µg täglich</strong> (Kaliumjodid oder organisch aus Meeresalgen). Höhere Dosen nur unter ärztlicher Kontrolle. <span class='warn'>Bei Hashimoto: unbedingt erst Rücksprache!</span>",
+    wann:"<strong>Morgens mit einer Mahlzeit.</strong> Immer zusammen mit Selen. Selen zuerst aufbauen (2–4 Wochen), dann Jod ergänzen.",
+    nicht:"<span class='warn'>Jod-Supplemente nie ohne Selen</span> (ab 150 µg). Jodsalz im Alltag ist unbedenklich. Keine hochdosierten Algenpräparate unkontrolliert — Jodgehalt schwankt stark.",
+    ampel:"r", foot:[{t:"warn",x:"🩸 VOR Start: TSH, fT3, fT4, Anti-TPO"},{t:"def",x:"Selen zuerst aufbauen!"}],
+    blogs:[] },
+
+  { id:"q10", teaser:"Zellenergie · Herz · Statinschutz · ab 40 Ubiquinol", cat:"zelle", num:"10", title:"Q10 · Ubiquinol", sub:"Zellenergie pur · Herz · Anti-Aging · Statinschutz", badge:"Täglich",
+    keywords:"q10 ubiquinol ubiquinon coenzym statine herz energie mitochondrien anti-aging müde müdigkeit erschöpfung erschöpft",
+    wofuer:"ATP-Produktion, Herzmuskel, Mitochondrienschutz, Anti-Aging, Fatigue. <strong>Statine blockieren die körpereigene Q10-Synthese — Mangel bei Statineinnahme ist die Regel!</strong>",
+    dosis:"<strong>100–300 mg täglich.</strong> Es gibt zwei Formen: <strong>Ubiquinon</strong> (günstig, muss aktiviert werden) und <strong>Ubiquinol</strong> (bereits aktiviert). Ab 40 Jahren direkt Ubiquinol kaufen — die wirksamere Wahl.",
+    wann:"<strong>Mit der fettreichsten Mahlzeit</strong> (fettlöslich). Morgens oder mittags — abends energetisierend.",
+    nicht:"Q10 ähnelt Vitamin K und kann <span class='warn'>Marcumar</span> abschwächen — INR engmaschiger kontrollieren, nicht abrupt starten/absetzen.",
+    ampel:"g", foot:[{t:"warn",x:"Bei Statineinnahme: dringend supplementieren!"}],
+    blogs:[] },
+
+  { id:"nac", teaser:"Glutathion-Vorstufe · Leber · Lunge · kurweise", cat:"zelle", num:"11", title:"NAC · N-Acetyl-Cystein", sub:"Der Entgifter · Glutathion-Vorstufe · Lunge · Leber", badge:"Kurweise",
+    keywords:"nac n-acetyl-cystein glutathion entgiftung leber lunge antioxidans",
+    wofuer:"Vorstufe von <strong>Glutathion</strong> (Mutter aller Antioxidantien). Leberentgiftung, Lungengesundheit, Schutz bei Paracetamol, Alkohol, Schwermetallen, oxidativem Stress.",
+    dosis:"<strong>600–1.200 mg täglich</strong> als Kapsel oder Pulver. 4–8 Wochen kurweise; bei chronischer Belastung täglich.",
+    wann:"<strong>Nüchtern oder zwischen den Mahlzeiten</strong> — Aminosäurekonkurrenz mit Nahrungsprotein minimieren.",
+    nicht:"Vorsicht bei <span class='warn'>ACE-Hemmern und Nitraten</span> — NAC verstärkt deren gefäßerweiternde Wirkung. Erst nach Absprache mit dem Arzt.",
+    ampel:"g", foot:[{t:"ok",x:"Kein Bluttest erforderlich"}],
+    blogs:[] },
+
+  { id:"b-komplex", teaser:"Energie · Nerven · Nebennieren · Haare · morgens", cat:"zelle", num:"12", title:"B-Komplex + Biotin (B7)", sub:"Energie · Nerven · Nebennieren · Haare · Haut", badge:"Täglich",
+    keywords:"b-komplex b-vitamine biotin b7 haare nebennieren energie nerven cortisol stress müde müdigkeit erschöpfung erschöpft",
+    wofuer:"B1 (Nerven, Energie), B2 (Zellschutz), B3 (Cholesterin, Haut), B5 (Nebennieren, Cortisol!), B6 (Serotonin, Hormone), B7/Biotin (Haarwuchs, Nägel, Haut). Grundlage des Energiestoffwechsels und der Stressresistenz.",
+    dosis:"<strong>Qualitatives B-Komplex täglich</strong> — stets als Komplex, nie einzelne B-Vitamine isoliert hochdosieren. Hochdosiertes B12 allein kann bei manchen Akne-ähnliche Reaktionen auslösen. Bei gezieltem Haarausfall: Biotin separat bis 5.000 µg möglich.",
+    wann:"<strong>Morgens zum Frühstück</strong> — energetisierend, abends meiden. Wasserlöslich, kein Fett nötig.",
+    nicht:"Nicht zeitgleich mit <span class='warn'>Magnesium in hoher Dosis</span>. Kein Alkohol. <span class='warn'>Vor Bluttests: Biotin 48 Std. pausieren</span> — verfälscht Laborwerte!",
+    ampel:"g", foot:[{t:"ok",x:"Bluttest nicht nötig"}],
+    blogs:[{label:"Stress frisst Nährstoffe", url:"https://drpullig.com/blog/stress-naehrstoffe"},{label:"Biochemie der Ruhe", url:"https://drpullig.com/blog/biochemie-der-ruhe"}] },
+
+  { id:"alpha-liponsaeure", teaser:"Blutzucker · Nerven · Antioxidans · nüchtern", cat:"zelle", num:"13", title:"Alpha-Liponsäure", sub:"Universelles Antioxidans · Blutzucker · Nerven · Entgiftung", badge:"Kurweise",
+    keywords:"alpha-liponsäure ala antioxidans blutzucker neuropathie nerven insulin",
+    wofuer:"Das einzige Antioxidans, das wasser- UND fettlöslich ist — wirkt in jeder Zelle. Blutzuckerregulation, Insulinsensitivität, Nervenschutz (Neuropathie!), regeneriert andere Antioxidantien (Vit. C, E, Glutathion).",
+    dosis:"<strong>300–600 mg täglich</strong> (R-Alpha-Liponsäure = biologisch aktive Form, deutlich wirksamer). Bei Neuropathie auch höher, dann ärztlich begleiten.",
+    wann:"<strong>30 Minuten vor der Mahlzeit</strong> (nüchtern bessere Aufnahme). Bei Magenproblemen: mit kleiner Mahlzeit.",
+    nicht:"Vorsicht bei <span class='warn'>Diabetesmedikamenten</span> — kann Blutzucker senken. <span class='warn'>Nicht zeitgleich mit Eisen, Zink, Magnesium</span> — ALA ist ein Chelatbildner. Mind. 2 Std. Abstand.",
+    ampel:"g", foot:[{t:"gold",x:"Bei Diabetes: Blutzucker kontrollieren"}],
+    blogs:[] },
+
+  { id:"ashwagandha", teaser:"Cortisol senken · Stress · Schlaf · abends", cat:"adapt", num:"14", title:"Ashwagandha", sub:"Das Adaptogen · Cortisol · Stress · Schlaf · Schilddrüse", badge:"Täglich / Kurweise",
+    keywords:"ashwagandha adaptogen cortisol stress schlaf schilddrüse ksm-66 testosteron müde müdigkeit erschöpfung erschöpft",
+    wofuer:"Stressresistenz (HPA-Achse regulieren), Cortisol senken, Schlafqualität, Testosteron &amp; Fertilität, Schilddrüsenunterstützung, Muskelaufbau. Evidenzbasiertes Adaptogen der ayurvedischen Medizin.",
+    dosis:"<strong>300–600 mg täglich</strong> (KSM-66 oder Sensoril = standardisierte Extrakte mit bester Datenlage). 8–12 Wochen kurweise, dann Pause. Bei chronischem Stress auch längerfristig.",
+    wann:"<strong>Abends</strong> (bei Schlafproblemen, Cortisol-Senkung) oder <strong>morgens</strong> (bei Energiemangel). Mit Mahlzeit oder Milch besser verträglich.",
+    nicht:"Vorsicht bei <span class='warn'>Schilddrüsenerkrankungen</span> (kann T3/T4 erhöhen — Kontrolle!). Nicht mit Immunsuppressiva. Bei Autoimmunerkrankungen: Arzt fragen.",
+    ampel:"g", foot:[{t:"gold",x:"Bei Schilddrüsenerkrankungen: Kontrolle"},{t:"def",x:"Kurweise: 8–12 Wochen"}],
+    blogs:[] },
+
+  { id:"astaxanthin", teaser:"Stärkstes Antioxidans · Haut · Augen · mit Fett", cat:"adapt", num:"15", title:"Astaxanthin", sub:"Stärkstes natürliches Antioxidans · Haut · Augen · Sport", badge:"Täglich",
+    keywords:"astaxanthin antioxidans haut augen uv-schutz sport regeneration algen entzündung gelenke",
+    wofuer:"Das stärkste bekannte natürliche Antioxidans (6.000× stärker als Vitamin C). UV-Schutz von innen, Hautqualität, Augengesundheit (Makulaschutz), sportliche Leistung &amp; Muskelregeneration, entzündungshemmend, Herzschutz.",
+    dosis:"<strong>4–12 mg täglich</strong> (aus Haematococcus-Algen = natürliche Form). Synthetisches Astaxanthin meiden. 4 mg = Einstieg, 8–12 mg für therapeutische Wirkung.",
+    wann:"<strong>Mit der fettreichsten Mahlzeit</strong> — fettlöslich wie D3 und Q10. Morgens oder mittags.",
+    nicht:"Keine relevanten Wechselwirkungen bekannt. Sehr gut verträglich. Kann Haut bei sehr hohen Dosen leicht rötlich-orange tönen.",
+    ampel:"g", foot:[{t:"ok",x:"Kein Bluttest erforderlich"},{t:"gold",x:"Fettlöslich: immer mit Fett"}],
+    blogs:[] },
+
+  { id:"berberin", teaser:"Blutzucker · Darm · Cholesterin · zu den Mahlzeiten", cat:"adapt", num:"16", title:"Berberin", sub:"Blutzucker · Darm · Cholesterin · Insulinsensitivität", badge:"Zu den Mahlzeiten",
+    keywords:"berberin blutzucker darm cholesterin insulin metformin pcos hba1c",
+    wofuer:"Blutzuckerregulation (vergleichbar mit Metformin in Studien!), Insulinsensitivität, Cholesterin senken, Darmmikrobiom regulieren, entzündungshemmend, PCOS, prädiabetischer Stoffwechsel.",
+    dosis:"<strong>3 × 500 mg täglich</strong> (zu den 3 Hauptmahlzeiten — kurze Halbwertszeit erfordert Verteilung). Berberinhydrochlorid = beste Bioverfügbarkeit. Nicht dauerhaft — alle 2–3 Monate Pause einlegen.",
+    wann:"<strong>Direkt zu den Mahlzeiten</strong> (senkt Blutzuckeranstieg nach dem Essen). Auf leeren Magen: Magenprobleme möglich. Auf die drei Hauptmahlzeiten verteilen.",
+    nicht:"<span class='warn'>Blutzuckermedikamente, Metformin</span> (verstärkt Wirkung → Hypoglykämie!). Vorsicht bei Blutverdünnern. Nicht in der Schwangerschaft.",
+    ampel:"g", foot:[{t:"gold",x:"Optional: HbA1c als Verlaufskontrolle"},{t:"gold",x:"Nicht dauerhaft — alle 2–3 Mo. Pause"}],
+    blogs:[] },
+];
+
+/* Blog-Links für „Dr. Pulligs Wort" — hier ebenfalls leicht pflegbar */
+const WORT_BLOGS = {
+  "wort-darm":   [{label:"Der Darm — vergessener Hauptdarsteller", url:"https://drpullig.com/blog/darm-mikrobiom"}],
+  "wort-stress": [{label:"Nebennierenschwäche", url:"https://drpullig.com/blog/nebennierenschwaeche"},{label:"Stress frisst Nährstoffe", url:"https://drpullig.com/blog/stress-naehrstoffe"},{label:"Erschöpfung", url:"https://drpullig.com/blog/erschoepfung-ganzheitlich"}],
+  "wort-schlaf": [{label:"Schlaf — die unterschätzte Superkraft", url:"https://drpullig.com/blog/schlaf-superkraft"}],
+};
+
+/* ════════ RENDER ════════ */
+const ampelText = { g:"🟢 Einfach starten", y:"🟡 Test empfohlen", r:"🔴 Nur nach Test" };
+const dotMap = { wofuer:"db", dosis:"do", wann:"dg", nicht:"dr" };
+
+function cardHTML(n, openByDefault) {
+  const blogBtns = (n.blogs||[]).map(b =>
+    `<a href="${b.url}" target="_blank" rel="noopener" class="tag t-blog">📖 ${b.label} →</a>`).join("");
+  const footTags = (n.foot||[]).map(f => `<span class="tag t-${f.t}">${f.x}</span>`).join("");
+  return `
+  <article class="card${openByDefault?' open':''}" data-cat="${n.cat}" data-search="${n.title.toLowerCase()} ${n.keywords}" id="${n.id}">
+    <span class="anchor" id="nem-${n.id}"></span>
+    <div class="card-head ch-${n.cat}" role="button" tabindex="0" aria-expanded="${openByDefault?'true':'false'}">
+      <div class="card-num">${n.num}</div>
+      <div class="card-titlewrap">
+        <div class="card-title">${n.title}</div>
+        <div class="card-sub">${n.sub}</div>
+      </div>
+      <div class="card-badge">${n.badge}</div>
+      <div class="card-chevron">▼</div>
+    </div>
+    <div class="card-body"><div class="card-body-inner">
+      <div class="fields">
+        <div class="field"><div class="field-label"><span class="dot ${dotMap.wofuer}"></span>Wofür?</div><div class="field-val">${n.wofuer}</div></div>
+        <div class="field"><div class="field-label"><span class="dot ${dotMap.dosis}"></span>Dosierung &amp; Form</div><div class="field-val">${n.dosis}</div></div>
+        <div class="field"><div class="field-label"><span class="dot ${dotMap.wann}"></span>Wann &amp; wie?</div><div class="field-val">${n.wann}</div></div>
+        <div class="field"><div class="field-label"><span class="dot ${dotMap.nicht}"></span>Nicht kombinieren mit</div><div class="field-val">${n.nicht}</div></div>
+      </div>
+      <div class="card-foot">
+        <span class="ampel ampel-${n.ampel}">${ampelText[n.ampel]}</span>
+        ${footTags}
+        ${blogBtns}
+      </div>
+    </div></div>
+  </article>`;
+}
+
+// Render cards: Basis open by default, rest collapsed
+["basis","erw","zelle","adapt"].forEach(cat => {
+  const open = (cat === "basis");
+  document.getElementById("cards-"+cat).innerHTML =
+    NEM.filter(n => n.cat===cat).map(n => cardHTML(n, open)).join("");
+});
+
+// Render Wort blog links
+Object.entries(WORT_BLOGS).forEach(([id, list]) => {
+  const el = document.getElementById(id);
+  if (el) el.innerHTML = list.map(b =>
+    `<a href="${b.url}" target="_blank" rel="noopener" class="tag t-blog">📖 ${b.label} →</a>`).join("");
+});
+
+/* ════════ TOGGLE CARDS ════════ */
+function toggleCard(card){
+  const open = card.classList.toggle("open");
+  card.querySelector(".card-head").setAttribute("aria-expanded", open ? "true" : "false");
+  // den zugehörigen Abschnitts-Button mit aktualisieren
+  const sec = card.closest(".section[data-cat]");
+  if (sec) {
+    const btn = sec.querySelector(".expand-btn");
+    if (btn && typeof syncExpandBtn === "function") syncExpandBtn(btn);
+  }
+}
+document.querySelectorAll(".card-head").forEach(head => {
+  head.addEventListener("click", () => toggleCard(head.closest(".card")));
+  head.addEventListener("keydown", e => {
+    if (e.key === "Enter" || e.key === " ") { e.preventDefault(); toggleCard(head.closest(".card")); }
+  });
+});
+// teaser line also toggles the card
+document.querySelectorAll(".card-teaser").forEach(tz => {
+  tz.addEventListener("click", () => toggleCard(tz.closest(".card")));
+});
+
+/* ════════ EXPAND ALL (per section) ════════ */
+// hält den Button-Text immer passend zum echten Zustand der Karten
+function syncExpandBtn(btn) {
+  const cards = document.querySelectorAll(`#cards-${btn.dataset.target} .card`);
+  const allOpen = [...cards].every(c => c.classList.contains("open"));
+  btn.textContent = allOpen ? "Alle einklappen" : "Alle ausklappen";
+}
+document.querySelectorAll(".expand-btn").forEach(btn => {
+  syncExpandBtn(btn); // beim Laden: Text an Startzustand anpassen
+  btn.addEventListener("click", () => {
+    const cat = btn.dataset.target;
+    const cards = document.querySelectorAll(`#cards-${cat} .card`);
+    const allOpen = [...cards].every(c => c.classList.contains("open"));
+    cards.forEach(c => {
+      c.classList.toggle("open", !allOpen);
+      c.querySelector(".card-head").setAttribute("aria-expanded", !allOpen ? "true":"false");
+    });
+    syncExpandBtn(btn);
+  });
+});
+
+/* ════════ NAV CHIPS = SPRUNGMARKEN (kein Ausblenden mehr!) ════════
+   Ein Klick scrollt zum Abschnitt. Alle Abschnitte bleiben immer sichtbar,
+   damit nie wieder Bereiche "verschwinden". Nur die Suche blendet gezielt aus. */
+const search = document.getElementById("search");
+const noResults = document.getElementById("noResults");
+const chips = document.querySelectorAll(".chip");
+chips.forEach(chip => {
+  chip.addEventListener("click", () => {
+    const f = chip.dataset.filter;
+    // beim Springen eine evtl. aktive Suche zurücksetzen
+    if (search.value) { search.value = ""; resetSearch(); }
+    const target = (f === "all")
+      ? document.querySelector("main")
+      : document.getElementById(f);
+    if (target) {
+      const y = (f === "all") ? 0 : target.getBoundingClientRect().top + window.scrollY - 110;
+      window.scrollTo({ top: y, behavior: "smooth" });
+    }
+  });
+});
+
+/* Sprung-Buttons: Tagesplan, Bluttest */
+document.querySelectorAll(".chip-jump").forEach(btn => {
+  btn.addEventListener("click", () => {
+    if (search.value) { search.value = ""; resetSearch(); }
+    const target = document.getElementById(btn.dataset.jump);
+    if (target) window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - 110, behavior: "smooth" });
+  });
+});
+
+/* ════════ SEARCH ════════ */
+const searchCount = document.getElementById("searchCount");
+// Umlaut-Toleranz: ö=oe, ä=ae, ü=ue, ß=ss — funktioniert in beide Richtungen
+function normalize(str) {
+  return str.toLowerCase()
+    .replace(/ö/g,"oe").replace(/ä/g,"ae").replace(/ü/g,"ue").replace(/ß/g,"ss");
+}
+function resetSearch() {
+  document.querySelectorAll(".card").forEach(c => c.classList.remove("hidden","dimmed"));
+  document.querySelectorAll(".section[data-cat]").forEach(s => s.style.display = "");
+  noResults.classList.remove("show");
+  searchCount.classList.remove("show");
+  document.body.classList.remove("searching");
+  // Basis wieder offen, Rest zu (Ausgangszustand)
+  document.querySelectorAll(".card").forEach(c => {
+    const isBasis = c.closest("#cards-basis");
+    c.classList.toggle("open", !!isBasis);
+    c.querySelector(".card-head").setAttribute("aria-expanded", isBasis ? "true":"false");
+  });
+}
+search.addEventListener("input", () => {
+  const q = normalize(search.value.trim());
+  const sections = document.querySelectorAll(".section[data-cat]");
+  if (q === "") { resetSearch(); return; }
+  document.body.classList.add("searching");
+
+  const matches = [];
+  document.querySelectorAll(".card").forEach(card => {
+    const match = normalize(card.dataset.search).includes(q);
+    card.classList.toggle("hidden", !match);
+    if (match) matches.push(card);
+  });
+
+  // 1 Treffer → aufklappen; mehrere → alle zugeklappt (Überblick)
+  const single = matches.length === 1;
+  matches.forEach(card => {
+    card.classList.toggle("open", single);
+    card.querySelector(".card-head").setAttribute("aria-expanded", single ? "true":"false");
+  });
+
+  // nur Abschnitte mit Treffer zeigen
+  sections.forEach(sec => {
+    sec.style.display = sec.querySelectorAll(".card:not(.hidden)").length > 0 ? "" : "none";
+  });
+
+  // Zähler / keine-Treffer
+  noResults.classList.toggle("show", matches.length === 0);
+  if (matches.length > 1) {
+    searchCount.innerHTML = `${matches.length} Treffer für „${search.value.trim()}" <span>– tippen Sie auf einen Nährstoff, um Details zu sehen</span>`;
+    searchCount.classList.add("show");
+  } else {
+    searchCount.classList.remove("show");
+  }
+
+  // zum ersten Treffer (bzw. zum Zähler) scrollen
+  const anchorEl = (matches.length > 1) ? searchCount : matches[0];
+  if (anchorEl) {
+    const y = anchorEl.getBoundingClientRect().top + window.scrollY - 130;
+    window.scrollTo({ top: y, behavior: "smooth" });
+  }
+});
+</script>
+</body>
+</html>
