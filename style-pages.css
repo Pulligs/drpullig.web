@@ -1187,3 +1187,35 @@ section#abrechnung.info-section .info-card-large > .btn {
         -webkit-overflow-scrolling: touch;
     }
 }
+
+
+/* === MOBILE-MENÜ: Literatur-CTA prominent oben als grüner Kasten === */
+@media (max-width: 768px) {
+    /* Sicherstellen dass .main-nav flex ist (für order zu funktionieren) */
+    .main-nav.mobile-active {
+        display: flex !important;
+        flex-direction: column !important;
+    }
+    
+    /* Literatur-Button: ganz nach oben + großer grüner Kasten */
+    .main-nav.mobile-active .cta-button {
+        order: -1 !important;
+        background: #9fa979 !important;
+        color: white !important;
+        text-align: center !important;
+        padding: 1rem 1.5rem !important;
+        margin: 0 0 1.5rem 0 !important;
+        border-radius: 4px !important;
+        font-weight: 600 !important;
+        letter-spacing: 0.5px !important;
+        font-size: 1rem !important;
+        text-decoration: none !important;
+        display: block !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+    
+    .main-nav.mobile-active .cta-button:hover {
+        background: #8a9468 !important;
+    }
+}
