@@ -1175,3 +1175,15 @@ section#abrechnung.info-section .info-card-large > .btn {
     max-width: 650px;
     margin: 0 auto;
 }
+
+/* === MOBILE-MENÜ: Schutz vor Verdeckung durch Browser-Toolbar (iOS Safari, Chrome Mobile) === */
+@media (max-width: 768px) {
+    .main-nav.mobile-active {
+        /* Großzügiger unterer Abstand damit Literatur-Button nicht hinter der Browser-Bottom-Bar verschwindet */
+        padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 100px) !important;
+        box-sizing: border-box !important;
+        /* Scrollbar falls Menü länger wird als Viewport (z.B. bei kleinen Bildschirmen) */
+        overflow-y: auto !important;
+        -webkit-overflow-scrolling: touch;
+    }
+}
