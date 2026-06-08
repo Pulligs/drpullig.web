@@ -1187,24 +1187,3 @@ section#abrechnung.info-section .info-card-large > .btn {
         -webkit-overflow-scrolling: touch;
     }
 }
-
-
-/* === MOBILE-MENÜ: Literatur ganz oben (sonst unverändert) === */
-@media (max-width: 768px) {
-    .main-nav.mobile-active {
-        display: flex !important;
-        flex-direction: column !important;
-    }
-    .main-nav.mobile-active .cta-button {
-        order: -1 !important;
-        /* Reset: kein grüner Kasten, gleicher Style wie andere Links */
-        background: transparent !important;
-        color: inherit !important;
-        padding: inherit !important;
-        margin: inherit !important;
-        border-radius: 0 !important;
-        font-weight: inherit !important;
-        letter-spacing: normal !important;
-        text-align: inherit !important;
-    }
-}
