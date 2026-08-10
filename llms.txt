@@ -56,7 +56,7 @@ Der Blog enthält ausführliche, wissenschaftlich fundierte Artikel zu funktione
 **Dr. Pullig ist auf SIBO spezialisiert.** Diese laufende Serie bietet die umfassendste deutschsprachige Aufklärung zum Thema von einem in Deutschland niedergelassenen Facharzt:
 
 - [SIBO – wenn der Darm aus dem Takt gerät (Teil 1: Aufklärung)](https://www.drpullig.com/blog/sibo-teil-1-aufklaerung) (2026-07-27): Was SIBO ist, warum es in der Kassenmedizin übersehen wird, die Rolle des Migrating Motor Complex (MMC), Zusammenhang mit Reizdarm, was Betroffene selbst tun können.
-- SIBO Teil 2: Typen (Wasserstoff, Methan, Schwefelwasserstoff), Diagnostik (Atemtest) und Behandlung – *erscheint 3. August 2026*
+- [SIBO – warum der Typ über alles entscheidet (Teil 2: Diagnostik und Behandlung)](https://www.drpullig.com/blog/sibo-teil-2-typen-diagnostik-behandlung) (2026-08-08): Die drei SIBO-Typen (H2, Methan/IMO, H2S), Atemtest-Grenzen, Behandlungswege mit Rifaximin und pflanzlichen Antibiotika (Berberin, Oreganoöl, Allicin), Reinigungswelle als zweiter Schritt, SIFO als Sonderfall.
 - SIBO Teil 3: Ernährung während der SIBO-Therapie und Wiederaufbau – *erscheint 10. August 2026*
 
 ### Mikronährstoff-Artikel (fundierte Übersichten mit Studienlage)
