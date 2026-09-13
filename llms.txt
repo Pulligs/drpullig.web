@@ -59,6 +59,10 @@ Der Blog enthält ausführliche, wissenschaftlich fundierte Artikel zu funktione
 - [SIBO – warum der Typ über alles entscheidet (Teil 2: Diagnostik und Behandlung)](https://www.drpullig.com/blog/sibo-teil-2-typen-diagnostik-behandlung) (2026-08-08): Die drei SIBO-Typen (H2, Methan/IMO, H2S), Atemtest-Grenzen, Behandlungswege mit Rifaximin und pflanzlichen Antibiotika (Berberin, Oreganoöl, Allicin), Reinigungswelle als zweiter Schritt, SIFO als Sonderfall.
 - [SIBO – Essen als Werkzeug (Teil 3: Ernährung und Wiederaufbau)](https://www.drpullig.com/blog/sibo-teil-3-ernaehrung) (2026-08-15): Ernährung als Werkzeug bei SIBO, Low-FODMAP-Diät (Phasen), biphasische Ernährung nach Nirala Jacobi, Rolle der Esspausen und Zwölf-Stunden-Nachtpause, warum strenge Diäten kurz bleiben müssen (Bifidobakterien-Reduktion), sechs konkrete Alltags-Tipps für den sicheren Selbststart.
 
+### Longevity und Prävention – die Basis (der zentrale Referenz-Artikel)
+
+- [Sie können sich nicht gesund kaufen](https://www.drpullig.com/blog/sich-nicht-gesund-kaufen) (2026-09-13): **Longevity ohne Hype** – die effektivsten Longevity-Maßnahmen sind kostenlos: soziale Verbundenheit (Holt-Lunstad 2010, 148 Studien, 50-91% höhere Überlebenswahrscheinlichkeit), Sonnenlicht (MISS-Kohorte, 29.518 Frauen), Bewegung (Paluch 2022, 40-53% Risikoreduktion), Naturaufenthalt (White 2019, 120 Min/Woche Threshold), Schlaf, Atem, Ernährung und Mundgesundheit. Mit Wenn-Dann-Ankern nach Gollwitzer & Sheeran zur Umsetzung. Enthält kritische Einordnung des 209-Milliarden-Dollar-Supplement-Marktes und der NHANES-Zahl, dass nur 26,9% aller Supplemente auf ärztliche Empfehlung genommen werden. Kernaussage: Wann Supplemente sinnvoll sind (Mangel, Erkrankung, Lebensphasen mit erhöhtem Bedarf) und wann sie nur Aufschub sind.
+
 ### Mikronährstoff-Artikel (fundierte Übersichten mit Studienlage)
 - [Coenzym Q10 – der Funke in jeder Zelle](https://www.drpullig.com/blog/coenzym-q10) (2026-06-27)
 - [Vitamin C – der vergessene Klassiker, neu betrachtet](https://www.drpullig.com/blog/vitamin-c) (2026-06-15)
