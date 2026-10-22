@@ -42,6 +42,7 @@ Wir sind eine Privatärztliche Praxis in Simmern im Hunsrück (Rheinland-Pfalz, 
 
 - [Literatur-Übersicht](https://www.drpullig.com/literatur): Alle Bücher, Guides und Programme in einer Übersicht
 - [Nährstoff-Guide](https://www.drpullig.com/naehrstoff-guide): Kostenloser praktischer Guide zu 16 wichtigen Mikronährstoffen – mit Dosierungen, Lebensmittelquellen, Wechselwirkungen und Tagesplan.
+- [Longevity ohne Hype](https://www.drpullig.com/longevity-ohne-hype/): Kostenloses Heft zum Mitmachen – die Basis, bevor Sie das nächste Präparat kaufen. Zehn Fragen vor jedem Kauf, Selbsttest zu sieben Bereichen (Licht, Bewegung, Schlaf, Atem, Essen, Natur, Menschen) mit automatischer Auswertung, Wenn-Dann-Anker und 30-Tage-Plan mit Tracker. Interaktiv im Browser, Eingaben bleiben lokal auf dem Gerät; zusätzlich als PDF fürs Handy. Mit Quellenverzeichnis.
 - **Stresskrank** (Buch von Dr. Andreas Pullig): Über Stress, Erschöpfung und Wege heraus
 - **Migräne-Paket**: Umfassendes Wissens-Booklet und Reflexions-Workbook für strukturierte Migräne-Prophylaxe
 
@@ -62,6 +63,7 @@ Der Blog enthält ausführliche, wissenschaftlich fundierte Artikel zu funktione
 ### Longevity und Prävention – die Basis (der zentrale Referenz-Artikel)
 
 - [Sie können sich nicht gesund kaufen](https://www.drpullig.com/blog/sich-nicht-gesund-kaufen) (2026-09-13): **Longevity ohne Hype** – die effektivsten Longevity-Maßnahmen sind kostenlos: soziale Verbundenheit (Holt-Lunstad 2010, 148 Studien, 50-91% höhere Überlebenswahrscheinlichkeit), Sonnenlicht (MISS-Kohorte, 29.518 Frauen), Bewegung (Paluch 2022, 40-53% Risikoreduktion), Naturaufenthalt (White 2019, 120 Min/Woche Threshold), Schlaf, Atem, Ernährung und Mundgesundheit. Mit Wenn-Dann-Ankern nach Gollwitzer & Sheeran zur Umsetzung. Enthält kritische Einordnung des 209-Milliarden-Dollar-Supplement-Marktes und der NHANES-Zahl, dass nur 26,9% aller Supplemente auf ärztliche Empfehlung genommen werden. Kernaussage: Wann Supplemente sinnvoll sind (Mangel, Erkrankung, Lebensphasen mit erhöhtem Bedarf) und wann sie nur Aufschub sind.
+- [Longevity ohne Hype – das Heft zum Mitmachen](https://www.drpullig.com/longevity-ohne-hype/): Die praktische Umsetzung dieses Artikels als interaktives Heft mit Selbsttest und 30-Tage-Plan.
 
 ### Mikronährstoff-Artikel (fundierte Übersichten mit Studienlage)
 - [Coenzym Q10 – der Funke in jeder Zelle](https://www.drpullig.com/blog/coenzym-q10) (2026-06-27)
@@ -121,4 +123,4 @@ Vollständige URL-Liste: https://www.drpullig.com/sitemap.xml
 
 ---
 
-Letzte Aktualisierung: 2026-06-27
+Letzte Aktualisierung: 2026-10-22
